@@ -1,0 +1,65 @@
+:host {
+  .nav {
+    height: 56px;
+    width: 100%;
+    background-color: rgba(255, 255, 255, 1);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.12);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    .nav-left {
+      display: flex;
+      align-items: center;
+      margin-left: 16px;
+
+      .nav-left-icon {
+        border-radius: 50%;
+        margin: 0 4px;
+        padding: 12px;
+        vertical-align: middle;
+        height: 24px;
+        width: 24px;
+
+        &:hover {
+          background-color: rgba(60, 64, 67, 0.08);
+          outline: none;
+        }
+      }
+
+      .title-app {
+        font-size: 22px;
+        line-height: 24px;
+      }
+    }
+
+    .nav-right {
+      display: flex;
+      align-items: center;
+      margin-right: 24px;
+
+      .launcher {
+        border-radius: 50%;
+        margin: 0 4px;
+        padding: 12px;
+        vertical-align: middle;
+        height: 24px;
+        width: 24px;
+
+        &:hover {
+          background-color: rgba(60, 64, 67, 0.08);
+          outline: none;
+        }
+      }
+
+      .avt {
+        width: 32px;
+        height: 32px;
+        min-width: 32px;
+        img {
+          border-radius: 50%;
+        }
+      }
+    }
+  }
+}

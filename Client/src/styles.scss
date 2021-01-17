@@ -1,0 +1,15 @@
+/* You can add global styles to this file, and also import other style files */
+@import "./assets/scss/icon.scss";
+
+*, body {
+  font-family: Roboto;
+  padding: 0;
+  margin: 0;
+  font-family: Roboto;
+  text-rendering: optimizeLegibility;
+}
+
+.cursor-pointer {
+  cursor: pointer;
+}
+

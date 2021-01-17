@@ -1,0 +1,49 @@
+@import "./link-icon.scss";
+
+@mixin setIconWithDefaultColor(
+  $icon-name,
+  $icon-width,
+  $icon-height,
+  $icon-posX,
+  $icon-posY,
+  $icon-link
+) {
+  .#{$icon-name} {
+    width: $icon-width;
+    height: $icon-height;
+    //không dùng được link chung vì lúc build sẽ bị lỗi
+    background: $icon-link $icon-posX $icon-posY no-repeat;
+  }
+}
+
+@mixin setIcon(
+  $icon-name,
+  $icon-width,
+  $icon-height,
+  $icon-color,
+  $icon-posX,
+  $icon-posY,
+  $icon-link
+) {
+  .#{$icon-name} {
+    width: $icon-width;
+    height: $icon-height;
+    //không dùng được link chung vì lúc build sẽ bị lỗi
+    // -webkit-mask-image: $link-icon;
+    @include make-property(mask-image, $icon-link);
+    @include make-property(mask-position, $icon-posX $icon-posY);
+    @include make-property(mask-repeat, no-repeat);
+    // mask-image: $link-icon;
+    // mask-position: $icon-posX $icon-posY;
+    background-color: $icon-color;
+    // mask-repeat: no-repeat;
+  }
+}
+
+
+@include setIconWithDefaultColor(icon-selected, 24px, 24px, -48px, 0px, $link-icon); 
+@include setIconWithDefaultColor(icon-history, 24px, 24px, -0px, 0px, $link-icon); 
+@include setIconWithDefaultColor(icon-launcher, 24px, 24px, -444px, 0px, $link-icon); 
+@include setIconWithDefaultColor(icon-swap, 24px, 24px, -24px, 0px, $link-icon); 
+@include setIconWithDefaultColor(icon-record, 24px, 24px, -120px, 0px, $link-icon); 
+@include setIconWithDefaultColor(icon-favorite, 24px, 24px, -96px, 0px, $link-icon); 
