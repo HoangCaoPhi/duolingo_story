@@ -1,12 +1,85 @@
 .content {
-  width: 100vw;
-  height: 100px;
-  // border-bottom: 1px solid rgba(0, 0, 0, 0.12);
-  background-color: #fafafa;
-
-  .action-translate {
-    display: flex;
-    justify-content: center;
-    margin-top: 72px;
+ 
+  .description-stories {
+    margin-top: 32px;
+    .title {
+      color: #4b4b4b;
+      font-size: 34px;
+      font-weight: 700;
+      line-height: 1.6;
+      margin-bottom: 14px;
+      margin-top: 0;
+    }
+    .descrition {
+      color: #4b4b4b;
+      font-size: 19px;
+      font-weight: 500;
+      line-height: 1.4;
+      margin: 0 auto;
+      max-width: 600px;
+      text-align: center;
+      width: 80%;
+    }
   }
+
+  .content-stories {
+    // max-width: 688px;
+    margin-top: 32px;
+
+    .title-content {
+      align-items: center;
+      color: #4b4b4b;
+      font-size: 27px;
+      font-weight: 700;
+      margin: 0 400px;
+      padding-bottom: 20px;
+
+      &:before {
+        background: #e5e5e5;
+        content: "";
+        height: 2px;
+        position: relative;
+        width: 50%;
+        margin-left: -50%;
+        right: 16px;
+      }
+
+      &:after {
+        background: #e5e5e5;
+        content: "";
+        height: 2px;
+        position: relative;
+        width: 50%;
+        left: 16px;
+        margin-right: -50%;
+      }
+
+    }
+
+    .stories-detail {
+      .stories {
+        margin: 23px 19px;
+        .storise-name {
+          color: #4b4b4b;
+          font-size: 17px;
+          font-weight: 700;
+          line-height: 21px;
+          margin-top: 5px;
+        }
+        .storise-xp {
+          color: #afafaf;
+          display: flex;
+          font-size: 15px;
+          font-weight: 700;
+          justify-content: center;
+          line-height: 21px;
+          margin-bottom: 7px;
+          margin-top: 7px;
+          text-transform: uppercase;
+        }
+      }
+    }
+  }
+
+
 }

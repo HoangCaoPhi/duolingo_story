@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ActionTranslateComponent } from './action-translate.component';
+import { ManagementsComponent } from './managements.component';
 
-describe('ActionTranslateComponent', () => {
-  let component: ActionTranslateComponent;
-  let fixture: ComponentFixture<ActionTranslateComponent>;
+describe('ManagementsComponent', () => {
+  let component: ManagementsComponent;
+  let fixture: ComponentFixture<ManagementsComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ActionTranslateComponent ]
+      declarations: [ ManagementsComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(ActionTranslateComponent);
+    fixture = TestBed.createComponent(ManagementsComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

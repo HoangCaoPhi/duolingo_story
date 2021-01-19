@@ -1,9 +1,24 @@
 <div class="content">
-    <!-- Phần chứa dịch -->
-    <app-content-translate></app-content-translate>
 
-    <!-- Phần chứa những action như lịch sử đã dịch, những từ đã lưu và đóng góp -->
-    <div class="action-translate">
-        <app-action-translate></app-action-translate>
+    <!-- Phần tiêu đề ở dashboard -->
+    <div class="description-stories">
+        <div class="title center-horizontal">Duolingo Stories</div>
+        <p class="description center-horizontal">Earn XP through stories that challenge your reading comprehension.</p>
     </div>
+
+    <!-- Các phần của câu chuyện theo từng Set -->
+    <div class="content-stories">
+        <div class="title-content center-horizontal">Set 1</div>
+        <div class="stories-detail center-horizontal">
+
+            <div class="stories cursor-pointer" *ngFor="let story of listStory">
+                <div [class]="story.IconName"></div>
+                <div class="storise-name">{{ story.IconText }}</div>
+                <div class="storise-xp">{{ story.IconXP }}</div>
+            </div>
+
+        </div>
+    </div>
+
+
 </div>

@@ -5,8 +5,8 @@ const routes: Routes = [
   {
     path: "",
     loadChildren: () => 
-      import('../app/components/dashboard/dashboard.module').then(
-        m => m.DashboardModule
+      import('../app/components/managements/managements.module').then(
+        m => m.ManagementsModule
       )
   }
 ];
