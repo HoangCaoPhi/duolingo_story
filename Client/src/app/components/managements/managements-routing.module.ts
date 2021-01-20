@@ -9,7 +9,11 @@ const routes: Routes = [
     component: ManagementsComponent,
     children: [
       {
-        path: 'dashboard',
+        path: 'stories',
+        loadChildren: () => import('../dashboard/dashboard.module').then(m => m.DashboardModule)
+      },
+      {
+        path: '**',
         loadChildren: () => import('../dashboard/dashboard.module').then(m => m.DashboardModule)
       }
     ]

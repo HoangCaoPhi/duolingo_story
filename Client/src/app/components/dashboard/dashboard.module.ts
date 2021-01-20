@@ -4,10 +4,11 @@ import { CommonModule } from '@angular/common';
 import { DashboardRoutingModule } from './dashboard-routing.module';
 import { DashboardComponent } from './dashboard.component';
 import { DxButtonModule, DxTextAreaModule } from 'devextreme-angular';
+import { StoriesDetailComponent } from './stories-detail/stories-detail.component';
 
 
 @NgModule({
-  declarations: [DashboardComponent],
+  declarations: [DashboardComponent, StoriesDetailComponent],
   imports: [
     CommonModule,
     DashboardRoutingModule,

@@ -11,7 +11,7 @@
         <div class="title-content center-horizontal">Set 1</div>
         <div class="stories-detail center-horizontal">
 
-            <div class="stories cursor-pointer" *ngFor="let story of listStory">
+            <div class="stories cursor-pointer" *ngFor="let story of listStory" (click)="openStoriesDetail(story.IconID)">
                 <div [class]="story.IconName"></div>
                 <div class="storise-name">{{ story.IconText }}</div>
                 <div class="storise-xp">{{ story.IconXP }}</div>
