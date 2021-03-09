@@ -11,9 +11,10 @@
         <div class="title-content center-horizontal">Set 1</div>
         <div class="stories-detail center-horizontal">
 
-            <div class="stories cursor-pointer" *ngFor="let story of listStory" (click)="openStoriesDetail(story.IconID)">
-                <div [class]="story.IconName"></div>
-                <div class="storise-name">{{ story.IconText }}</div>
+            <div class="stories cursor-pointer" *ngFor="let story of listStory" (click)="openStoriesDetail(story.id)">
+                <!-- <div [class]="story.IconName"></div> -->
+                <img [src]="story.image" alt="">
+                <div class="storise-name">{{ story.name_base }}</div>
                 <div class="storise-xp">{{ story.IconXP }}</div>
             </div>
 

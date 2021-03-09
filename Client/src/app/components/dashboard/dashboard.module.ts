@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 
 import { DashboardRoutingModule } from './dashboard-routing.module';
 import { DashboardComponent } from './dashboard.component';
-import { DxButtonModule, DxTextAreaModule } from 'devextreme-angular';
+import { DxButtonModule, DxProgressBarModule, DxTextAreaModule } from 'devextreme-angular';
 import { StoriesDetailComponent } from './stories-detail/stories-detail.component';
 
 
@@ -13,7 +13,8 @@ import { StoriesDetailComponent } from './stories-detail/stories-detail.componen
     CommonModule,
     DashboardRoutingModule,
     DxButtonModule,
-    DxTextAreaModule
+    DxTextAreaModule,
+    DxProgressBarModule
   ]
 })
 export class DashboardModule { }

@@ -1,1 +1,19 @@
-<p>stories-detail works!</p>
+<div class="story-detail">
+  <div class="header">
+    <div class="icon-close"></div>
+    <div class="progess">
+      <dx-progress-bar
+        #progressBar
+        id="progress-bar-status"
+        width="90%"
+        [class.complete]="10"
+        [min]="0"
+        [max]="10"
+        [value]="5"
+      >
+      </dx-progress-bar>
+    </div>
+  </div>
+  <div class="main"></div>
+  <div class="footer"></div>
+</div>
