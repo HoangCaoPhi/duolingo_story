@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { StoryService } from 'src/app/services/story.service';
 
 @Component({
@@ -10,7 +10,8 @@ import { StoryService } from 'src/app/services/story.service';
 export class StoriesDetailComponent implements OnInit {
   constructor(
     private storySV: StoryService,
-    private activeRouter: ActivatedRoute
+    private activeRouter: ActivatedRoute,
+    private router: Router
   ) {}
 
   ngOnInit(): void {
@@ -26,5 +27,12 @@ export class StoriesDetailComponent implements OnInit {
     this.storySV.getStory(id).subscribe((data) => {
       console.log(data);
     });
+  }
+
+  /**
+   * Đóng bài học
+   */
+  closeStory() {
+    this.router.navigate(['']);
   }
 }

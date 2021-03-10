@@ -1,11 +1,12 @@
 <div class="story-detail">
   <div class="header">
-    <div class="icon-close"></div>
-    <div class="progess">
+    <div class="icon-close cursor-pointer" (click)="closeStory()"></div>
+    <!-- Thanh tiến trình -->
+    <div class="progress">
       <dx-progress-bar
         #progressBar
         id="progress-bar-status"
-        width="90%"
+        width="100%"
         [class.complete]="10"
         [min]="0"
         [max]="10"
@@ -13,7 +14,15 @@
       >
       </dx-progress-bar>
     </div>
+    <!-- End thanh tiến trình -->
   </div>
   <div class="main"></div>
-  <div class="footer"></div>
+
+  <!-- Footer -->
+  <div class="footer">
+    <div class="continue">
+      <dx-button stylingMode="contained" text="Continue" [width]="150">
+      </dx-button>
+    </div>
+  </div>   <!-- End Footer -->
 </div>
