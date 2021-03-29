@@ -22,6 +22,30 @@
 @include margin-element(left);
 @include margin-element(all);
 
+@mixin m-element($side) {
+  @if $side == all {
+    // nếu là margin cả 4 phía
+    @for $i from 1 through 300 {
+      .m-#{$i} {
+        margin: #{$i}px;
+      }
+    }
+  } @else {
+    // nếu là margin 1 phía cụ thể
+    @for $i from 1 through 300 {
+      .m-#{$side}-#{$i} {
+        margin-#{$side}: #{$i}px;
+      }
+    }
+  }
+}
+// câu này sẽ build ra hàng loạt class, vd: .margin-top-32
+@include m-element(top);
+@include m-element(right);
+@include m-element(bottom);
+@include m-element(left);
+@include m-element(all);
+
 // @side: có thể là: top,right, bottom, left hoặc all
 @mixin padding-element($side) {
   @if $side == all {

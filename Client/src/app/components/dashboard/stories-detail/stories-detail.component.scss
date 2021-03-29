@@ -1,6 +1,8 @@
 @import "./../../../../assets/scss/color.scss";
 :host {
   .story-detail {
+    height: 500px;
+    overflow-y: scroll;
     .header {
       display: flex;
       justify-content: center;
@@ -12,27 +14,34 @@
         margin-top: 4px;
       }
     }
+    .main {
+    }
   }
 
   ::ng-deep {
     // Progress
-    .dx-progressbar-container {
-      display: inline-block;
-      background: #e5e5e5;
-      height: 16px;
-      border-radius: 8px;
-    }
+    .progress {
+      .dx-progressbar-container {
+        display: inline-block;
+        background: #e5e5e5;
+        height: 16px;
+        border-radius: 8px;
+      }
 
-    .dx-progressbar-range {
-      border-radius: 8px;
-      border: 1px solid $color-progress;
-      background-color: $color-progress;
-    }
+      .dx-progressbar-range {
+        border-radius: 8px;
+        border: 1px solid $color-progress;
+        background-color: $color-progress;
+      }
 
-    .dx-progressbar-status {
-      display: none;
-    }
+      .dx-progressbar-status {
+        display: none;
+      }
 
+      .dx-state-hover {
+        background-color: #61e002;
+      }
+    }
     // Continue
     .dx-button-mode-contained {
       background-color: $color-btn;
@@ -44,16 +53,11 @@
     .dx-button-text {
       color: white;
       font-size: 16px;
-      letter-spacing: .8px;
+      letter-spacing: 0.8px;
       font-weight: 700;
       text-transform: uppercase;
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
-        "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji",
-        "Segoe UI Emoji", "Segoe UI Symbol";
-    }
-
-    .dx-state-hover {
-        background-color: #61E002;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif,
+        "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
     }
   }
 
@@ -76,4 +80,113 @@
       margin-right: 128px;
     }
   }
+  .avt {
+    height: 50px;
+    margin-right: 12px;
+    width: 50px;
+    display: flex;
+  }
+}
+
+.figure {
+  .bubble {
+    background-color: #fff;
+    border: 2px solid #dedede;
+    border-radius: 14px;
+    border-top-left-radius: 14px;
+    border-top-left-radius: 0;
+    max-width: 80%;
+    padding: 10px 12px;
+    width: max-content;
+    position: relative;
+    display: inline-block;
+    &::before {
+      border-bottom: 12px solid transparent;
+      border-right: 12px solid #dedede;
+      border-top-left-radius: 50%;
+      content: "";
+      left: -14px;
+      position: absolute;
+      top: -2px;
+    }
+    &::after {
+      border-bottom: 12px solid transparent;
+      border-right: 12px solid #fff;
+      content: "";
+      left: -9px;
+      position: absolute;
+      top: 0;
+    }
+  }
+}
+
+.title {
+  font-weight: bold;
+  font-size: 25px;
+  line-height: 34px;
+  .word {
+    position: relative;
+    background-image: linear-gradient(to right, #e5e5e5 60%, rgba(255, 255, 255, 0) 0%);
+    background-position: 0% 100%;
+    background-repeat: repeat-x;
+    background-size: 5px 2px;
+    padding-bottom: 5px;
+  }
+}
+
+.question {
+  .multiple-choice {
+    .content-question {
+      display: flex;
+      flex-direction: column;
+      .text-answers {
+        color: #4b4b4b;
+        font-size: 19px;
+        font-weight: 500;
+        line-height: 1.68;
+      }
+    }
+  }
+}
+
+::ng-deep {
+  .dx-checkbox-checked.dx-checkbox-icon {
+    background: red;
+  }
+  .dx-checkbox-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 9px;
+    background: #fff;
+    border: solid #e5e5e5;
+  }
+  .dx-checkbox-checked .dx-checkbox-icon {
+    font: 16px/16px DXIcons;
+    color: #e5e5e5;
+    text-align: center;
+  }
+  .dx-checkbox.dx-state-focused .dx-checkbox-icon {
+    border: solid #e5e5e5;
+  }
+  .dx-checkbox.dx-state-hover .dx-checkbox-icon {
+    border: solid #e5e5e5;
+  }
+}
+
+.title-question {
+  font-size: 19px;
+  font-weight: bold;
+}
+
+.word-order {
+  line-height: 1.45;
+  background: #fff;
+  border: solid #e5e5e5;
+  border-radius: 14px;
+  color: #4b4b4b;
+  cursor: pointer;
+  display: inline-block;
+  font-size: 19px;
+  margin: 4px;
+  padding: 8px 15px;
 }

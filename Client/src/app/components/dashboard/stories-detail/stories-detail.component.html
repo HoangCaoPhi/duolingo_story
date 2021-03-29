@@ -3,20 +3,48 @@
     <div class="icon-close cursor-pointer" (click)="closeStory()"></div>
     <!-- Thanh tiến trình -->
     <div class="progress">
-      <dx-progress-bar
-        #progressBar
-        id="progress-bar-status"
-        width="100%"
-        [class.complete]="10"
-        [min]="0"
-        [max]="10"
-        [value]="5"
-      >
+      <dx-progress-bar #progressBar id="progress-bar-status" width="100%" [class.complete]="10" [min]="0" [max]="10"
+        [value]="5">
       </dx-progress-bar>
     </div>
     <!-- End thanh tiến trình -->
   </div>
-  <div class="main"></div>
+  <div class="main">
+
+    <ng-container *ngFor="let item of listStoryData">
+      <!-- <div class="title dis-flex justify-content-center">
+        <div class="icon-sound m-right-8 cursor-pointer"></div>
+        <div class="word m-right-8" id="suggest" (mouseenter)="toggleTooltip()" (mouseleave)="toggleTooltip()">Good
+        </div>
+        <div class="word" id="suggest" (mouseenter)="toggleTooltip()" (mouseleave)="toggleTooltip()">Morning</div>
+        <div class="word">!</div>
+      </div> -->
+
+      <!-- Nhân vật kèm theo lời thoại -->
+      <app-line *ngIf="item?.type === storyType.LINE"></app-line>
+
+      <!-- Cậu hỏi nhiều lựa chọn -->
+      <div class="question dis-flex justify-content-center" *ngIf="item?.type === storyType.MULTIPLE_CHOICE">
+        <app-multipl-choice></app-multipl-choice>
+      </div>
+
+      <!-- Dạng câu hỏi điền từ -->
+      <div class="question dis-flex justify-content-center" *ngIf="item?.type === storyType.MULTIPLE_CHOICE">
+        <app-challenge-prompt></app-challenge-prompt>
+      </div>
+
+      <div class="question dis-flex justify-content-center" *ngIf="item?.type === storyType.MULTIPLE_CHOICE">
+        <app-arrange></app-arrange>
+      </div>
+
+      <!-- Dạng câu hỏi chọn từ -->
+      <div class="question dis-flex justify-content-center" *ngIf="item?.type === storyType.POINT_TO_PHRASE">
+        <app-point-to-phrase></app-point-to-phrase>
+      </div>
+
+    </ng-container>
+
+  </div>
 
   <!-- Footer -->
   <div class="footer">
@@ -24,5 +52,13 @@
       <dx-button stylingMode="contained" text="Continue" [width]="150">
       </dx-button>
     </div>
-  </div>   <!-- End Footer -->
+  </div> <!-- End Footer -->
 </div>
+
+<!-- Tooltip gợi ý từ -->
+<dx-tooltip position="top" class="suggest-tooltip" target="#suggest" [(visible)]="isShowSuggestWord"
+  [closeOnOutsideClick]="false">
+  <div *dxTemplate="let data = data of 'content'">
+    <div style="color: #4c4c4c; font-size: 19px;">Chào</div>
+  </div>
+</dx-tooltip>

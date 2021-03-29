@@ -1,0 +1,18 @@
+:host {
+    .multiple-choice {
+        .content-question {
+            display: flex;
+            flex-direction: column;
+            .text-answers {
+                color: #4b4b4b;
+                font-size: 19px;
+                font-weight: 500;
+                line-height: 1.68;
+            }
+        }
+    }
+    .title-question {
+        font-size: 19px;
+        font-weight: bold;
+    }
+}

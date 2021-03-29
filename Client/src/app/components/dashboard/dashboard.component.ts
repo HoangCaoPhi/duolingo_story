@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { takeUntil } from 'rxjs/operators';
+import { BaseComponent } from 'src/app/base/base-component';
 import { StoryService } from 'src/app/services/story.service';
 import { Story } from 'src/app/shared/models/Story';
 
@@ -8,7 +10,7 @@ import { Story } from 'src/app/shared/models/Story';
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.scss'],
 })
-export class DashboardComponent implements OnInit {
+export class DashboardComponent extends BaseComponent implements OnInit {
   //#region Properties
 
   listStory: Story[] | undefined;
@@ -16,35 +18,10 @@ export class DashboardComponent implements OnInit {
   //#endregion
 
   //#region Contructor
-
-  // listStory = [
-  //   {
-  //     IconID: 1,
-  //     IconName : "icon-good-morning",
-  //     IconText: "Good Morning",
-  //     IconXP: "14XP"
-  //   },
-  //   {
-  //     IconID: 2,
-  //     IconName : "icon-good-morning",
-  //     IconText: "Good Morning",
-  //     IconXP: "14XP"
-  //   },
-  //   {
-  //     IconID: 3,
-  //     IconName : "icon-good-morning",
-  //     IconText: "Good Morning",
-  //     IconXP: "14XP"
-  //   },
-  //   {
-  //     IconID: 4,
-  //     IconName : "icon-good-morning",
-  //     IconText: "Good Morning",
-  //     IconXP: "14XP"
-  //   }
-  // ]
-
-  constructor(private router: Router, private storySV: StoryService) {}
+ 
+  constructor(private router: Router, private storySV: StoryService) {
+    super();
+  }
 
   ngOnInit(): void {
     this.getList();
@@ -60,7 +37,9 @@ export class DashboardComponent implements OnInit {
    * Lấy về danh sách Story
    */
   getList() {
-    this.storySV.getList().subscribe((data) => {
+    this.storySV.getList()
+    .pipe(takeUntil(this._onDestroySub))
+    .subscribe((data) => {
       this.listStory = data;
     });
   }

@@ -1,0 +1,52 @@
+:host {
+    .figure {
+        .bubble {
+            background-color: #fff;
+            border: 2px solid #dedede;
+            border-radius: 14px;
+            border-top-left-radius: 14px;
+            border-top-left-radius: 0;
+            max-width: 80%;
+            padding: 10px 12px;
+            width: max-content;
+            position: relative;
+            display: inline-block;
+            &::before {
+                border-bottom: 12px solid transparent;
+                border-right: 12px solid #dedede;
+                border-top-left-radius: 50%;
+                content: "";
+                left: -14px;
+                position: absolute;
+                top: -2px;
+            }
+            &::after {
+                border-bottom: 12px solid transparent;
+                border-right: 12px solid #fff;
+                content: "";
+                left: -9px;
+                position: absolute;
+                top: 0;
+            }
+        }
+    }
+    .title {
+        font-weight: bold;
+        font-size: 25px;
+        line-height: 34px;
+        .word {
+            position: relative;
+            background-image: linear-gradient(to right, #e5e5e5 60%, rgba(255, 255, 255, 0) 0%);
+            background-position: 0% 100%;
+            background-repeat: repeat-x;
+            background-size: 5px 2px;
+            padding-bottom: 5px;
+        }
+    }
+    .avt {
+        height: 50px;
+        margin-right: 12px;
+        width: 50px;
+        display: flex;
+    }
+}
