@@ -1,64 +1,62 @@
 @import "./../../../../assets/scss/color.scss";
+@import "../../../../assets/scss/dx-style-overrid.scss";
+@import "../../../../assets/scss/loading.scss";
+
 :host {
   .story-detail {
-    height: 500px;
+    height: 520px;
     overflow-y: scroll;
+    overflow-x: hidden;
+
+    // Firefox
+    scrollbar-color: #687a84 #e8eaef !important;
+    scrollbar-width: thin !important;
+
+    // Chorme
+    &::-webkit-scrollbar {
+      width: 8px;
+      height: 245px;
+    }
+
+    /* Track */
+    &::-webkit-scrollbar-track {
+      // box-shadow: inset 0 0 5px grey;
+      border-radius: 10px;
+      background-color: #e8eaef;
+    }
+
+    /* Handle */
+    &::-webkit-scrollbar-thumb {
+      border-radius: 10px;
+      background-color: #687a84;
+    }
+
     .header {
       display: flex;
-      justify-content: center;
       align-items: center;
-      margin-top: 16px;
+      justify-content: center;
+      padding: 45px 40px 40px;
+      position: fixed;
+      left: 0;
+      top: 0;
+      width: 100%;
+      background: white;
+      box-sizing: border-box;
+      z-index: 10;
+
       .progress {
         margin-left: 16px;
-        width: 90%;
+        width: 60%;
         margin-top: 4px;
       }
     }
     .main {
+      margin-top: 36px;
     }
   }
 
-  ::ng-deep {
-    // Progress
-    .progress {
-      .dx-progressbar-container {
-        display: inline-block;
-        background: #e5e5e5;
-        height: 16px;
-        border-radius: 8px;
-      }
-
-      .dx-progressbar-range {
-        border-radius: 8px;
-        border: 1px solid $color-progress;
-        background-color: $color-progress;
-      }
-
-      .dx-progressbar-status {
-        display: none;
-      }
-
-      .dx-state-hover {
-        background-color: #61e002;
-      }
-    }
-    // Continue
-    .dx-button-mode-contained {
-      background-color: $color-btn;
-      border-radius: 15px;
-      border: 0;
-      box-shadow: $color-btn 0 5px;
-    }
-
-    .dx-button-text {
-      color: white;
-      font-size: 16px;
-      letter-spacing: 0.8px;
-      font-weight: 700;
-      text-transform: uppercase;
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif,
-        "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
-    }
+  .footer-active {
+    background-color: #b8f28b !important;
   }
 
   .footer {
@@ -73,9 +71,30 @@
     box-sizing: border-box;
 
     display: flex;
-    justify-content: flex-end;
+    justify-content: space-between;
     align-items: center;
 
+    .wrap-icon {
+      background: #fff;
+      border-radius: 98px;
+      display: inline-block;
+      flex-shrink: 0;
+      float: left;
+      height: 80px;
+      margin-right: 16px;
+      width: 80px;
+
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .text-footer {
+      color: #58a700;
+      font-size: 25px;
+      margin: 0 0 0 12px;
+      display: flex;
+      align-items: center;
+    }
     .continue {
       margin-right: 128px;
     }
@@ -135,6 +154,8 @@
 }
 
 .question {
+  margin-left: 30%;
+  margin-bottom: 20px;
   .multiple-choice {
     .content-question {
       display: flex;
@@ -150,6 +171,13 @@
 }
 
 ::ng-deep {
+  .disable {
+    background: #a3a3a3;
+    transform: translate(0, 5px);
+    box-shadow: #575757 0 0px;
+    color: #575757;
+    cursor: default;
+  }
   .dx-checkbox-checked.dx-checkbox-icon {
     background: red;
   }
@@ -170,6 +198,10 @@
   }
   .dx-checkbox.dx-state-hover .dx-checkbox-icon {
     border: solid #e5e5e5;
+  }
+
+  .dx-state-disabled.dx-checkbox .dx-checkbox-icon {
+    opacity: 1;
   }
 }
 

@@ -2,24 +2,35 @@
 
     <!-- Phần tiêu đề ở dashboard -->
     <div class="description-stories">
-        <div class="title center-horizontal">Duolingo Stories</div>
-        <p class="description center-horizontal">Earn XP through stories that challenge your reading comprehension.</p>
+        <div class="title center-horizontal">Stories</div>
+        <p class="description center-horizontal">CHỌN NGÔN NGỮ BẠN MUỐN HỌC</p>
     </div>
 
-    <!-- Các phần của câu chuyện theo từng Set -->
-    <div class="content-stories">
-        <div class="title-content center-horizontal">Set 1</div>
-        <div class="stories-detail center-horizontal">
-
-            <div class="stories cursor-pointer" *ngFor="let story of listStory" (click)="openStoriesDetail(story.id)">
-                <!-- <div [class]="story.IconName"></div> -->
-                <img [src]="story.image" alt="">
-                <div class="storise-name">{{ story.name_base }}</div>
-                <div class="storise-xp">{{ story.IconXP }}</div>
-            </div>
-
+    <!-- Danh sách ngôn ngữ -->
+    <div class="language dis-flex justify-content-center" *ngIf="isShowListLanguage">
+        <div class="box" *ngFor="let item of listLanguage" (click)="openStory(item)">
+            <div class="flag" [class]="item?.name"></div>
+            <div class="name-nation"> {{ item?.name }} </div>
         </div>
     </div>
+    <!-- End danh sách ngôn ngũ -->
 
+    <!-- Loading -->
+    <div class="content-stories" *ngIf="isLoading && isShowListLanguage">
+        <div class="stories-detail center-horizontal">
+            <div class="stories box-thumbnail"></div>
+            <div class="stories box-thumbnail"></div>
+            <div class=" stories box-thumbnail"></div>
+        </div>
+        <div class="stories-detail center-horizontal">
+            <div class="stories box-thumbnail"></div>
+            <div class="stories box-thumbnail"></div>
+            <div class=" stories box-thumbnail"></div>
+        </div>
+    </div>
+    <!-- End loading -->
 
+    <div class="language">
+        <app-stories *ngIf="!isShowListLanguage" (isHiddenLang)="hiddenLang($event)"></app-stories>
+    </div>
 </div>

@@ -12,9 +12,9 @@ export class StoryService {
   /**
    * Lấy về danh sách Story
    */
-  getList(): Observable<Story[]> {
+  getList(lang: string, lang_base: string): Observable<Story[]> {
     return this.http.get<Story[]>(
-      'https://carex.uber.space/stories/backend/stories/get_list.php?lang=en&lang_base=it'
+      `https://carex.uber.space/stories/backend/stories/get_list.php?lang=${lang}&lang_base=${lang_base}`
     );
   }
 
@@ -27,4 +27,17 @@ export class StoryService {
       `https://carex.uber.space/stories/backend/stories/get_story_json.php?id=${id}`
     );
   }
+
+  /**
+   * Lấy danh sách ngôn ngữ
+   * @param id 
+   * @returns 
+   */
+  getLanguages(): Observable<any> {
+    return this.http.get<any[]>(
+      `  https://carex.uber.space/stories/backend/stories/get_languages.php`
+    );
+  }
+
+
 }

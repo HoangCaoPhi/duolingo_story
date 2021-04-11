@@ -10,7 +10,54 @@
     margin: 4px;
     padding: 8px 15px;
 }
+
+.not-selected {
+    margin: 2px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 .title-question {
     font-size: 19px;
     font-weight: bold;
+}
+
+.wrong {
+    animation-duration: 0.8s;
+    animation-name: _2W3fZ;
+    position: relative;
+}
+
+.exactly {
+    background: #b8f28b;
+    border-color: #ade756;
+    color: #78c800;
+    cursor: auto;
+}
+
+@keyframes _2W3fZ {
+    0%,
+    to {
+        background-color: transparent;
+        color: #4b4b4b;
+        left: 0;
+    }
+    12.5%,
+    37.5%,
+    62.5%,
+    87.5% {
+        background-color: #ffd7d8;
+        border-color: #f5a4a4;
+        color: #ff4b4b;
+        left: -4px;
+    }
+    25%,
+    50%,
+    75% {
+        background-color: #ffd7d8;
+        border-color: #f5a4a4;
+        color: #ff4b4b;
+        left: 4px;
+    }
 }

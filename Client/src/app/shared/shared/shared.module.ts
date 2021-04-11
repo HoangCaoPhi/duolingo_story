@@ -8,7 +8,7 @@ import { ChallengePromptComponent } from './challenge-prompt/challenge-prompt.co
 import { ArrangeComponent } from './arrange/arrange.component';
 import { PointToPhraseComponent } from './point-to-phrase/point-to-phrase.component';
 import { MatchComponent } from './match/match.component';
-import { DxCheckBoxModule } from 'devextreme-angular';
+import { DxCheckBoxModule, DxTooltipModule } from 'devextreme-angular';
 
 
 @NgModule({
@@ -16,7 +16,8 @@ import { DxCheckBoxModule } from 'devextreme-angular';
   imports: [
     CommonModule,
     SharedRoutingModule,
-    DxCheckBoxModule
+    DxCheckBoxModule,
+    DxTooltipModule
   ],
   exports: [LineComponent, MultiplChoiceComponent, ChallengePromptComponent, ArrangeComponent, PointToPhraseComponent, MatchComponent]
 })

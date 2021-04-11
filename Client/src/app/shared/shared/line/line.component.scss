@@ -1,4 +1,8 @@
 :host {
+    .word-title {
+
+    }
+    
     .figure {
         .bubble {
             background-color: #fff;
@@ -6,7 +10,7 @@
             border-radius: 14px;
             border-top-left-radius: 14px;
             border-top-left-radius: 0;
-            max-width: 80%;
+            max-width: 90%;
             padding: 10px 12px;
             width: max-content;
             position: relative;
@@ -41,6 +45,10 @@
             background-repeat: repeat-x;
             background-size: 5px 2px;
             padding-bottom: 5px;
+
+            font-size: 19px;
+            font-weight: 500;
+            line-height: 1.68;
         }
     }
     .avt {
@@ -49,4 +57,8 @@
         width: 50px;
         display: flex;
     }
+}
+
+.hidden {
+    color: white;
 }

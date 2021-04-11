@@ -2,10 +2,15 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { DashboardComponent } from './dashboard.component';
 import { StoriesDetailComponent } from './stories-detail/stories-detail.component';
+import { StoriesComponent } from './stories/stories.component';
 
 const routes: Routes = [
   {
-    path: ":id",
+    path: "/stories",
+    component: StoriesComponent
+  },
+  {
+    path: "stories/:id",
     component: StoriesDetailComponent
   },
   {

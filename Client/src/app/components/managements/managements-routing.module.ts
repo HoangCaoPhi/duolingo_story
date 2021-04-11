@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
-import { DashboardComponent } from '../dashboard/dashboard.component';
+import { RouterModule, Routes } from '@angular/router';
 import { ManagementsComponent } from './managements.component';
 
 const routes: Routes = [
@@ -9,7 +8,7 @@ const routes: Routes = [
     component: ManagementsComponent,
     children: [
       {
-        path: 'stories',
+        path: 'languages',
         loadChildren: () => import('../dashboard/dashboard.module').then(m => m.DashboardModule)
       },
       {

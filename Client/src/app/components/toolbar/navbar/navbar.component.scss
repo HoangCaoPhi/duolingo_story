@@ -1,4 +1,27 @@
+@import "../../../../assets/scss/color.scss";
+@import "../../../../assets/scss/dx-style-overrid.scss";
+::ng-deep {
+  #flag-image {
+    background-size: 40px;
+    display: inline-block;
+    height: 32.19512px;
+    width: 40px;
+  }
+  .name {
+    color: black;
+    font-size: 20px;
+  }
+
+}
 :host {
+
+  .flag-image {
+    background-size: 40px;
+    display: inline-block;
+    height: 32.19512px;
+    width: 40px;
+  }
+
   .nav {
     height: 70px;
     width: 100%;

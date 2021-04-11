@@ -1,64 +1,101 @@
-<div class="story-detail">
+<div class="story-detail" #story>
   <div class="header">
     <div class="icon-close cursor-pointer" (click)="closeStory()"></div>
     <!-- Thanh tiến trình -->
     <div class="progress">
-      <dx-progress-bar #progressBar id="progress-bar-status" width="100%" [class.complete]="10" [min]="0" [max]="10"
-        [value]="5">
+      <dx-progress-bar #progressBar id="progress-bar-status" width="100%" [class.complete]="maxProgress"
+        [min]="minProgress" [max]="maxProgress" [value]="index">
       </dx-progress-bar>
     </div>
     <!-- End thanh tiến trình -->
   </div>
-  <div class="main">
 
-    <ng-container *ngFor="let item of listStoryData">
-      <!-- <div class="title dis-flex justify-content-center">
-        <div class="icon-sound m-right-8 cursor-pointer"></div>
-        <div class="word m-right-8" id="suggest" (mouseenter)="toggleTooltip()" (mouseleave)="toggleTooltip()">Good
-        </div>
-        <div class="word" id="suggest" (mouseenter)="toggleTooltip()" (mouseleave)="toggleTooltip()">Morning</div>
-        <div class="word">!</div>
-      </div> -->
+  <div class="main" *ngIf="!isLoading">
+
+    <!-- <div class="image dis-flex justify-content-center">
+      <img [src]="imageURL" alt="" style="width: 132px;">
+    </div> -->
+
+    <ng-container *ngFor="let item of listStory">
 
       <!-- Nhân vật kèm theo lời thoại -->
-      <app-line *ngIf="item?.type === storyType.LINE"></app-line>
+      <ng-container *ngIf="item?.type === storyType.LINE">
+        <div class="question dis-flex">
+          <app-line [lineObject]="item"></app-line>
+        </div>
+      </ng-container>
 
       <!-- Cậu hỏi nhiều lựa chọn -->
-      <div class="question dis-flex justify-content-center" *ngIf="item?.type === storyType.MULTIPLE_CHOICE">
-        <app-multipl-choice></app-multipl-choice>
-      </div>
+      <ng-container *ngIf="item?.type === storyType.MULTIPLE_CHOICE">
+        <div class="question dis-flex">
+          <app-multipl-choice [objectMutilpleChoice]="item" (isShowContinue)="showButtonCotinue($event)">
+          </app-multipl-choice>
+        </div>
+      </ng-container>
+
 
       <!-- Dạng câu hỏi điền từ -->
-      <div class="question dis-flex justify-content-center" *ngIf="item?.type === storyType.MULTIPLE_CHOICE">
-        <app-challenge-prompt></app-challenge-prompt>
-      </div>
-
-      <div class="question dis-flex justify-content-center" *ngIf="item?.type === storyType.MULTIPLE_CHOICE">
-        <app-arrange></app-arrange>
-      </div>
+      <ng-container *ngIf="item?.type === storyType.CHALLENGE_PROMPT">
+        <div class="question dis-flex">
+          <app-challenge-prompt></app-challenge-prompt>
+        </div>
+      </ng-container>
 
       <!-- Dạng câu hỏi chọn từ -->
-      <div class="question dis-flex justify-content-center" *ngIf="item?.type === storyType.POINT_TO_PHRASE">
-        <app-point-to-phrase></app-point-to-phrase>
-      </div>
+      <ng-container *ngIf="item?.type === storyType.POINT_TO_PHRASE">
+        <div class="question dis-flex">
+          <app-point-to-phrase [objectPointToPrase]="item"></app-point-to-phrase>
+        </div>
+      </ng-container>
+
+      <!-- Dạng câu hỏi tìm từ giống nhau -->
+      <ng-container *ngIf="item?.type === storyType.MATCH">
+        <div class="question dis-flex">
+          <app-match [objectMatch]="item"></app-match>
+        </div>
+
+      </ng-container>
+
+      <!-- Hiển thị tiêu đề của sắp xếp -->
+      <ng-container *ngIf="item?.type === storyType.CHALLENGE_PROMPT">
+        <div class="question dis-flex">
+          <app-challenge-prompt [objectChallenge]="item"></app-challenge-prompt>
+        </div>
+      </ng-container>
+
+
+      <!-- Sắp xếp từ  -->
+      <ng-container *ngIf="item?.type === storyType.ARRANGE">
+        <div class="question dis-flex">
+          <app-arrange [objectArrange]="item"></app-arrange>
+        </div>
+      </ng-container>
 
     </ng-container>
 
   </div>
 
+  <div class="main dis-flex justify-content-center" style="height: 60vh; align-items: center;" *ngIf="isLoading">
+    <div class="lds-dual-ring"></div>
+  </div>
   <!-- Footer -->
-  <div class="footer">
+  <div class="footer dis-flex" [ngClass]="{'footer-active': isShowButtonActive}">
+    <div class="dis-flex">
+      <div class="wrap-icon m-left-48" *ngIf="isShowButtonActive">
+        <div class="icon-tick"></div>
+      </div>
+  
+      <div class="text-footer" *ngIf="isShowButtonActive">Đáp án chính xác</div>
+    </div>
+
     <div class="continue">
-      <dx-button stylingMode="contained" text="Continue" [width]="150">
+      <dx-button stylingMode="contained" text="Tiếp tục" [width]="150" (click)="continue()" [ngClass]="{disable: isDisableButton}"
+        [disabled]="isDisableButton">
       </dx-button>
+      <!-- <dx-button stylingMode="contained" text="Continue" [width]="150" (click)="continue()"
+      >
+    </dx-button> -->
     </div>
   </div> <!-- End Footer -->
-</div>
 
-<!-- Tooltip gợi ý từ -->
-<dx-tooltip position="top" class="suggest-tooltip" target="#suggest" [(visible)]="isShowSuggestWord"
-  [closeOnOutsideClick]="false">
-  <div *dxTemplate="let data = data of 'content'">
-    <div style="color: #4c4c4c; font-size: 19px;">Chào</div>
-  </div>
-</dx-tooltip>
+</div>

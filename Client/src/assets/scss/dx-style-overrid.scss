@@ -1,0 +1,54 @@
+::ng-deep {
+    // Progress
+    .progress {
+        .dx-progressbar-container {
+            display: inline-block;
+            background: #e5e5e5;
+            height: 16px;
+            border-radius: 8px;
+        }
+
+        .dx-progressbar-range {
+            border-radius: 8px;
+            border-right: none !important;
+            border-bottom: 1px solid $color-progress;
+            border-left: none !important;
+            background-color: $color-progress;
+        }
+
+        .dx-progressbar-status {
+            display: none;
+        }
+
+        .dx-state-hover {
+            background-color: #61e002;
+        }
+    }
+    // Continue
+    .dx-button-mode-contained {
+        background-color: $color-btn;
+        border-radius: 15px;
+        border: 0;
+        box-shadow: $color-btn 0 5px;
+    }
+
+    .dx-button-text {
+        color: white;
+        font-size: 16px;
+        letter-spacing: 0.8px;
+        font-weight: 700;
+        text-transform: uppercase;
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif,
+            "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+    }
+
+    .dx-button-mode-contained.dx-state-hover {
+        background-color: #61e002!important;
+    }
+    .dx-button-mode-contained.dx-state-active {
+        background-color: #61e002!important;
+    }
+    .dx-button-mode-contained.dx-state-focused {
+        background-color: #61e002!important;
+    }
+}

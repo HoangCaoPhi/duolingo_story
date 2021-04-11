@@ -1,1 +1,10 @@
-<p>match works!</p>
+<div class="point-to-parse">
+    <div class="title-question"> {{ titleQuestion }} </div>
+    <div class="anwswer dis-flex">
+        <ng-container *ngFor="let item of listWord; let position = index">
+            <div class="word-order" (click)="selectedWord(item?.Value, position)"
+                [ngClass]="{wrong: item?.IsWrong, selected: item?.IsSelected, exact: item?.IsExact }"> {{ item?.Value }}
+            </div>
+        </ng-container>
+    </div>
+</div>
