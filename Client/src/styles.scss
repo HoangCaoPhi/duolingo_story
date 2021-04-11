@@ -1,7 +1,10 @@
 /* You can add global styles to this file, and also import other style files */
 @import "./assets/scss/icon.scss";
+@import "./assets/scss/mixin.scss";
+@import "./assets/scss/color.scss";
 
-*, body {
+*,
+body {
   font-family: Roboto;
   padding: 0;
   margin: 0;
@@ -21,7 +24,13 @@
   align-items: center;
 }
 
+.justify-content-center {
+  justify-content: center;
+}
+
 .center-horizontal {
   display: flex;
   justify-content: center;
 }
+
+

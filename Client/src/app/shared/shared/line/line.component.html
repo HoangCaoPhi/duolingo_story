@@ -1,0 +1,39 @@
+<!-- Nhân vật kèm theo lời thoại -->
+<div class="figure dis-flex justify-content-center m-top-16" *ngIf="lineType === lintTypeConstant.CHARACTER">
+    <div class="avt"><img [src]="avatarUrl" alt=""></div>
+    <div class="bubble">
+        <div class="title dis-flex justify-content-center">
+            <div class="icon-sound m-right-8 cursor-pointer"></div>
+
+            <ng-container *ngFor="let item of listArrText; let i = index">
+                <div class="word m-right-8" (mouseenter)="toggleTooltip($event, i)"
+                    (mouseleave)="toggleTooltip($event, i)" [ngClass]="{hidden: item?.Hide}">
+                    {{ item?.Text }}
+                </div>
+            </ng-container>
+
+        </div>
+    </div>
+</div>
+
+<div class="figure-title dis-flex justify-content-center m-top-16" *ngIf="lineType === lintTypeConstant.TITLE"
+    style="  margin-left: 15vw;">
+    <div class="title dis-flex justify-content-center">
+        <div class="icon-sound m-right-8 cursor-pointer"></div>
+
+        <ng-container *ngFor="let item of listArrText; let i = index">
+            <div class="word-title m-right-8" (mouseenter)="toggleTooltip($event, i)"
+                (mouseleave)="toggleTooltip($event, i)">
+                {{ item?.Text }}
+            </div>
+        </ng-container>
+
+    </div>
+</div>
+<!-- Tooltip gợi ý từ -->
+<dx-tooltip position="top" class="suggest-tooltip" [target]="currentTarget" [(visible)]="isShowSuggestWord"
+    [closeOnOutsideClick]="false">
+    <div *dxTemplate="let data = data of 'content'">
+        <div style="color: #4c4c4c; font-size: 19px;"> {{ hintText }} </div>
+    </div>
+</dx-tooltip>

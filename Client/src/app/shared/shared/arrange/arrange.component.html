@@ -1,0 +1,12 @@
+<div class="anwswer dis-flex">
+    <ng-container *ngFor="let item of selectablePhrases; let i = index">
+        <div 
+            class="word-order" 
+            (click)="selectedItem(item?.Value, i)" 
+            [ngClass]="{wrong: isWrong && item?.Value == currentItem}"
+            [class.exactly]="!item?.IsShow"
+        >
+            {{ item?.Value }}
+        </div>
+    </ng-container>
+</div>

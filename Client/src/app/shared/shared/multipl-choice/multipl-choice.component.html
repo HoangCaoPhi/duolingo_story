@@ -1,0 +1,12 @@
+<div class="multiple-choice">
+    <div class="title-question"> {{ titleQuestion }}</div>
+    <div class="content-question">
+
+        <div class="m-top-8 dis-flex" *ngFor="let answer of answers; let i = index"
+            [ngClass]="{'answer': isCorrectAnser && answer.value, 'not-answer': !isCorrectAnser}">
+            <dx-check-box [value]="answer?.value" (onValueChanged)="selectAnswer(answer, i)" [disabled]="isDisable" class="check"></dx-check-box>
+            <div class="m-left-16 text-answers"> {{ answer?.text }} </div>
+        </div>
+
+    </div>
+</div>

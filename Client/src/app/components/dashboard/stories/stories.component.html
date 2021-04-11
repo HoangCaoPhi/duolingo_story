@@ -1,0 +1,34 @@
+<!-- Các phần của câu chuyện theo từng Set -->
+<div class="content-stories">
+    <div class="title-content center-horizontal">Set 1</div>
+    <div class="stories-detail center-horizontal" *ngIf="!isLoading">
+
+        <div class="stories cursor-pointer" *ngFor="let story of listStory"
+            (click)="openStoriesDetail(story.id, story.image)">
+            <!-- <div [class]="story.IconName"></div> -->
+            <img [src]="story.image" alt="">
+            <div class="storise-name dis-flex justify-content-center">{{ story.name_base }}</div>
+            <div class="storise-xp">{{ story.IconXP }}</div>
+        </div>
+
+    </div>
+</div>
+
+<!-- Loading -->
+<div class="content-stories" *ngIf="isLoading">
+    <div class="stories-detail center-horizontal">
+        <div class="stories box-thumbnail"></div>
+        <div class="stories box-thumbnail"></div>
+        <div class=" stories box-thumbnail"></div>
+        <div class="stories box-thumbnail"></div>
+        <div class="stories box-thumbnail"></div>
+    </div>
+    <div class="stories-detail center-horizontal">
+        <div class="stories box-thumbnail"></div>
+        <div class="stories box-thumbnail"></div>
+        <div class=" stories box-thumbnail"></div>
+        <div class="stories box-thumbnail"></div>
+        <div class="stories box-thumbnail"></div>
+    </div>
+</div>
+<!-- End loading -->

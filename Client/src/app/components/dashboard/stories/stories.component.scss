@@ -1,0 +1,69 @@
+@import "../../../../assets/scss/loading.scss";
+.content-stories {
+    margin-top: 32px;
+
+    .title-content {
+        align-items: center;
+        color: #4b4b4b;
+        font-size: 27px;
+        font-weight: 700;
+        margin: 0 400px;
+        padding-bottom: 20px;
+
+        &:before {
+            background: #e5e5e5;
+            content: "";
+            height: 2px;
+            position: relative;
+            width: 50%;
+            margin-left: -50%;
+            right: 16px;
+        }
+
+        &:after {
+            background: #e5e5e5;
+            content: "";
+            height: 2px;
+            position: relative;
+            width: 50%;
+            left: 16px;
+            margin-right: -50%;
+        }
+    }
+
+    .stories-detail {
+        width: 900px;
+        flex-wrap: wrap;
+        .stories {
+            margin: 23px 19px;
+
+            img {
+                width: 132px;
+            }
+
+            .storise-name {
+                color: #4b4b4b;
+                font-size: 17px;
+                font-weight: 700;
+                line-height: 21px;
+                margin-top: 5px;
+            }
+            .storise-xp {
+                color: #afafaf;
+                display: flex;
+                font-size: 15px;
+                font-weight: 700;
+                justify-content: center;
+                line-height: 21px;
+                margin-bottom: 7px;
+                margin-top: 7px;
+                text-transform: uppercase;
+            }
+        }
+    }
+}
+
+.box-thumbnail {
+    width: 132px;
+    height: 120px;
+}

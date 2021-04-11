@@ -1,0 +1,104 @@
+@mixin margin-element($side) {
+  @if $side == all {
+    // nếu là margin cả 4 phía
+    @for $i from 1 through 300 {
+      .margin-#{$i} {
+        margin: #{$i}px;
+      }
+    }
+  } @else {
+    // nếu là margin 1 phía cụ thể
+    @for $i from 1 through 300 {
+      .margin-#{$side}-#{$i} {
+        margin-#{$side}: #{$i}px;
+      }
+    }
+  }
+}
+// câu này sẽ build ra hàng loạt class, vd: .margin-top-32
+@include margin-element(top);
+@include margin-element(right);
+@include margin-element(bottom);
+@include margin-element(left);
+@include margin-element(all);
+
+@mixin m-element($side) {
+  @if $side == all {
+    // nếu là margin cả 4 phía
+    @for $i from 1 through 300 {
+      .m-#{$i} {
+        margin: #{$i}px;
+      }
+    }
+  } @else {
+    // nếu là margin 1 phía cụ thể
+    @for $i from 1 through 300 {
+      .m-#{$side}-#{$i} {
+        margin-#{$side}: #{$i}px;
+      }
+    }
+  }
+}
+// câu này sẽ build ra hàng loạt class, vd: .margin-top-32
+@include m-element(top);
+@include m-element(right);
+@include m-element(bottom);
+@include m-element(left);
+@include m-element(all);
+
+// @side: có thể là: top,right, bottom, left hoặc all
+@mixin padding-element($side) {
+  @if $side == all {
+    // nếu là padding cả 4 phía
+    @for $i from 1 through 300 {
+      .padding-#{$i} {
+        padding: #{$i}px;
+      }
+    }
+  } @else {
+    // nếu là padding 1 phía cụ thể
+    @for $i from 1 through 300 {
+      .padding-#{$side}-#{$i} {
+        padding-#{$side}: #{$i}px;
+      }
+    }
+  }
+}
+// câu này sẽ build ra hàng loạt class, vd: .padding-top-32
+@include padding-element(top);
+@include padding-element(right);
+@include padding-element(bottom);
+@include padding-element(left);
+@include padding-element(all);
+
+// gen ra các class kích thước element
+@mixin size-element($name) {
+  @for $i from 1 through 300 {
+    .#{$name}-#{$i} {
+      #{$name}: #{$i}px;
+    }
+  }
+}
+@include size-element(height);
+@include size-element(width);
+
+@mixin boder-radius-element() {
+  @for $i from 1 through 100 {
+    .border-radius-#{$i}px {
+      border-radius: #{$i}px;
+    }
+  }
+}
+@include boder-radius-element();
+
+@mixin generate-class-line-clamp() {
+  @for $i from 1 through 20 {
+    .line-clamp-#{$i} {
+      overflow: hidden;
+      display: -webkit-box;
+      -webkit-line-clamp: #{$i};
+      -webkit-box-orient: vertical;
+    }
+  }
+}
+@include generate-class-line-clamp();

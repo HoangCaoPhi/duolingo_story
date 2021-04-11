@@ -1,0 +1,9 @@
+<div class="point-to-parse">
+    <div class="title-question"> {{ titleQuestion }} </div>
+    <div class="anwswer dis-flex">
+        <ng-container *ngFor="let item of selectedPhrase; let position = index">
+            <div class="word-order" *ngIf="item?.selectable" (click)="selectWord(item?.text, position)" [ngClass]="{wrong: item?.isWrong, exactly: item?.isCorrect}"> {{ item?.text }} </div>
+            <div class="not-selected" *ngIf="!item?.selectable"> {{ item?.text }} </div>
+        </ng-container>
+    </div>
+</div>
