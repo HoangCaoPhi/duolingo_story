@@ -54,4 +54,7 @@ export class NavbarComponent extends BaseComponent implements OnInit {
     this.isVisiblePopover = false;
   }
 
+  singIn() {
+    this.router.navigate(['/signin']);
+  }
 }
