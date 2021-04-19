@@ -52,6 +52,27 @@
     }
     .main {
       margin-top: 36px;
+
+      .complete {
+        .img {
+          height: 200px;
+          width: 200px;
+          img {
+            width: 100%;
+            left: 0;
+            top: 0;
+            height: 100%;
+          }
+        }
+        .text-complete {
+          font-size: 32px;
+          font-weight: bold;
+        }
+        .des-complete {
+          font-size: 16px;
+          font-style: italic;
+        }
+      }
     }
   }
 
@@ -105,6 +126,9 @@
     width: 50px;
     display: flex;
   }
+  .image {
+    margin-top: 116px;
+  }
 }
 
 .figure {
@@ -151,6 +175,11 @@
     background-size: 5px 2px;
     padding-bottom: 5px;
   }
+}
+
+.title-story {
+  margin-left: 30%;
+  margin-bottom: 20px;
 }
 
 .question {

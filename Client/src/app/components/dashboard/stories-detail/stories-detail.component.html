@@ -13,14 +13,22 @@
 
 
   <div class="main" *ngIf="!isLoading">
-    <!-- <div class="image dis-flex justify-content-center">
+
+    <div class="image dis-flex justify-content-center">
       <img [src]="imageURL" alt="" style="width: 132px;">
-    </div> -->
+    </div>
 
     <ng-container *ngFor="let item of listStory">
 
+      <!-- Tiêu đề  -->
+      <ng-container *ngIf="item?.type === storyType.LINE && item?.line?.type === 'TITLE'">
+        <div class="dis-flex justify-content-center ">
+          <app-line [lineObject]="item" (emitTextAudio)="playAudio($event)"></app-line>
+        </div>
+      </ng-container>
+
       <!-- Nhân vật kèm theo lời thoại -->
-      <ng-container *ngIf="item?.type === storyType.LINE">
+      <ng-container *ngIf="item?.type === storyType.LINE && item?.line?.type !== 'TITLE'">
         <div class="question dis-flex">
           <app-line [lineObject]="item" (emitTextAudio)="playAudio($event)"></app-line>
         </div>
@@ -73,6 +81,19 @@
       </ng-container>
 
     </ng-container>
+
+    <!-- Hoàn thành câu chuyện -->
+    <div class="complete dis-flex align-item-center flex-col" *ngIf="isCompleteStory">
+      <div class="img">
+        <img [src]="iconComplete" alt="" srcset="">
+      </div>
+      <div class="text-complete m-top-16">
+        Câu chuyện hoàn thành
+      </div>
+      <div class="des-complete m-top-24">
+        Bạn đã hoàn thành câu chuyện {{ storyName }}
+      </div>
+    </div>
 
   </div>
 

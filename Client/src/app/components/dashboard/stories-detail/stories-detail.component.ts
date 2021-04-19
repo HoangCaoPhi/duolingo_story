@@ -34,6 +34,16 @@ export class StoriesDetailComponent extends BaseComponent implements OnInit {
 
   isShowButtonActive = false;
 
+  /** Hoàn thành câu chuyện hay chưa ? */
+  isCompleteStory = false;
+
+  /** Đường dẫn icon hoàn thành câu chuyện */
+  iconComplete: string;
+
+  /** Tên câu chuyện */
+  storyName: string;
+
+
   html = '';
   result = '';
   speech: any;
@@ -49,7 +59,7 @@ export class StoriesDetailComponent extends BaseComponent implements OnInit {
     private _location: Location
   ) {
     super();
-    this.imageURL = this.router.getCurrentNavigation()?.extras.state?.imageURL;
+    // this.imageURL = this.router.getCurrentNavigation()?.extras.state?.imageURL;
     this.initTextToSpeech();
   }
 
@@ -114,6 +124,9 @@ export class StoriesDetailComponent extends BaseComponent implements OnInit {
         this.listStoryData = data?.elements;
         this.listStory = [this.listStoryData[this.index]];
         this.maxProgress = this.listStoryData?.length;
+        this.iconComplete = data?.illustrations?.gilded;
+        this.imageURL =  data?.illustrations?.active;
+        this.storyName = data?.fromLanguageName;
       });
   }
 
