@@ -7,6 +7,7 @@ import { DxButtonModule, DxCheckBoxModule, DxProgressBarModule, DxTextAreaModule
 import { StoriesDetailComponent } from './stories-detail/stories-detail.component';
 import { SharedModule } from 'src/app/shared/shared/shared.module';
 import { StoriesComponent } from './stories/stories.component';
+import { FormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -19,7 +20,8 @@ import { StoriesComponent } from './stories/stories.component';
     DxProgressBarModule,
     DxTooltipModule,
     DxCheckBoxModule,
-    SharedModule
+    SharedModule,
+    FormsModule
   ]
 })
 export class DashboardModule { }

@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { takeUntil } from 'rxjs/operators';
 import { BaseComponent } from 'src/app/base/base-component';
 import { TranferdataService } from 'src/app/services/tranferdata.service';
@@ -71,6 +71,9 @@ export class LineComponent extends BaseComponent implements OnInit {
     });
   }
 
+  /** Truyền Text để phát âm audio */
+  @Output() emitTextAudio = new EventEmitter<string>();
+
   //#endregion
   constructor(private tranferDataSV: TranferdataService) {
     super();
@@ -105,6 +108,12 @@ export class LineComponent extends BaseComponent implements OnInit {
     )
   }
 
+  /**
+   * Truyền nội dung để phát audio 
+   */
+  playAudio() {
+    this.emitTextAudio.emit(this.contentText);
+  }
 
   //#endregion
 

@@ -3,7 +3,8 @@
     <div class="avt"><img [src]="avatarUrl" alt=""></div>
     <div class="bubble">
         <div class="title dis-flex justify-content-center">
-            <div class="icon-sound m-right-8 cursor-pointer"></div>
+
+            <div class="icon-sound m-right-8 cursor-pointer" (click)="playAudio()"></div>
 
             <ng-container *ngFor="let item of listArrText; let i = index">
                 <div class="word m-right-8" (mouseenter)="toggleTooltip($event, i)"

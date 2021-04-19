@@ -10,8 +10,9 @@
     <!-- End thanh tiến trình -->
   </div>
 
-  <div class="main" *ngIf="!isLoading">
 
+
+  <div class="main" *ngIf="!isLoading">
     <!-- <div class="image dis-flex justify-content-center">
       <img [src]="imageURL" alt="" style="width: 132px;">
     </div> -->
@@ -21,7 +22,7 @@
       <!-- Nhân vật kèm theo lời thoại -->
       <ng-container *ngIf="item?.type === storyType.LINE">
         <div class="question dis-flex">
-          <app-line [lineObject]="item"></app-line>
+          <app-line [lineObject]="item" (emitTextAudio)="playAudio($event)"></app-line>
         </div>
       </ng-container>
 
@@ -84,13 +85,13 @@
       <div class="wrap-icon m-left-48" *ngIf="isShowButtonActive">
         <div class="icon-tick"></div>
       </div>
-  
+
       <div class="text-footer" *ngIf="isShowButtonActive">Đáp án chính xác</div>
     </div>
 
     <div class="continue">
-      <dx-button stylingMode="contained" text="Tiếp tục" [width]="150" (click)="continue()" [ngClass]="{disable: isDisableButton}"
-        [disabled]="isDisableButton">
+      <dx-button stylingMode="contained" text="Tiếp tục" [width]="150" (click)="continue()"
+        [ngClass]="{disable: isDisableButton}" [disabled]="isDisableButton">
       </dx-button>
       <!-- <dx-button stylingMode="contained" text="Continue" [width]="150" (click)="continue()"
       >

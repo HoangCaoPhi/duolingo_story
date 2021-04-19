@@ -11,7 +11,6 @@
   .#{$icon-name} {
     width: $icon-width;
     height: $icon-height;
-    //không dùng được link chung vì lúc build sẽ bị lỗi
     background: $icon-link $icon-posX $icon-posY no-repeat;
   }
 }
@@ -28,15 +27,10 @@
   .#{$icon-name} {
     width: $icon-width;
     height: $icon-height;
-    //không dùng được link chung vì lúc build sẽ bị lỗi
-    // -webkit-mask-image: $link-icon;
     @include make-property(mask-image, $icon-link);
     @include make-property(mask-position, $icon-posX $icon-posY);
     @include make-property(mask-repeat, no-repeat);
-    // mask-image: $link-icon;
-    // mask-position: $icon-posX $icon-posY;
     background-color: $icon-color;
-    // mask-repeat: no-repeat;
   }
 }
 
@@ -53,8 +47,11 @@
 @include setIconWithDefaultColor(icon-sound, 28px, 28px, -198px, 4px, $link-icon); 
 
 @include setIconWithDefaultColor(icon-close, 18px, 18px, -373px, -154px, $link-icon-story); 
-@include setIconWithDefaultColor(icon-tick, 42px, 30px, -165px, -90px, $link-icon-story); 
 
+// @include setIcon(icon-close-black, 18px, 18px, red, -373px, -154px, $link-icon-story); 
+
+@include setIconWithDefaultColor(icon-tick, 42px, 30px, -165px, -90px, $link-icon-story); 
+@include setIconWithDefaultColor(icon-form, 75px, 75px, -448px, -149px, $link-icon-story); 
 
 @include setIconWithDefaultColor(English, 82px, 66px, 0px, 0px, $link-flag); 
 @include setIconWithDefaultColor(Esperanto, 82px, 66px, 0px, -66px, $link-flag); 

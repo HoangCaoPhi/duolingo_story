@@ -4,7 +4,8 @@ import { BaseComponent } from 'src/app/base/base-component';
 import { StoryService } from 'src/app/services/story.service';
 import { takeUntil } from 'rxjs/operators';
 import { StoryType } from 'src/app/shared/enum/type-story';
-import {Location} from '@angular/common';
+import { Location } from '@angular/common';
+import Speech from 'speak-tts'
 
 declare var $: any;
 @Component({
@@ -33,6 +34,11 @@ export class StoriesDetailComponent extends BaseComponent implements OnInit {
 
   isShowButtonActive = false;
 
+  html = '';
+  result = '';
+  speech: any;
+  speechData: any;
+
   @ViewChild('story') private myScrollContainer: ElementRef;
 
   //#endregion
@@ -44,11 +50,55 @@ export class StoriesDetailComponent extends BaseComponent implements OnInit {
   ) {
     super();
     this.imageURL = this.router.getCurrentNavigation()?.extras.state?.imageURL;
+    this.initTextToSpeech();
   }
 
   ngOnInit(): void {
     let id: any = this.activeRouter.snapshot.paramMap.get('id');
     this.getList(id);
+  }
+
+  /**
+   * Khởi tạo phát âm
+   */
+  initTextToSpeech() {
+    this.speech = new Speech();
+
+    if (this.speech.hasBrowserSupport()) {
+      this.speech.init({
+        'volume': 1,
+        'lang': 'en-GB',
+        'rate': 1,
+        'pitch': 1,
+        'voice': 'Google UK English Male',
+        'splitSentences': true,
+        'listeners': {
+          'onvoiceschanged': (voices: any) => {
+
+          }
+        }
+      }).then((data: any) => {
+        console.log("Speech is ready, voices are available", data)
+        this.speechData = data;
+        data.voices.forEach((voice: { name: string; lang: string; }) => {
+
+        });
+      }).catch((e: any) => {
+
+      })
+    }
+  }
+  /**
+   * Phát âm thanh khi ấn vào phát âm
+   * @param e Text audio
+   */
+  playAudio(e: string) {
+    this.speech.speak({
+      text: e,
+    }).then(() => {
+    }).catch((e: any) => {
+
+    })
   }
 
   /**
@@ -67,6 +117,9 @@ export class StoriesDetailComponent extends BaseComponent implements OnInit {
       });
   }
 
+  /**
+   * Xử lý khi ấn tiếp tục
+   */
   continue() {
     this.index++;
     this.listStory = [...this.listStory, this.listStoryData[this.index + 1]];
@@ -91,13 +144,19 @@ export class StoriesDetailComponent extends BaseComponent implements OnInit {
     this._location.back();
   }
 
-
+  /**
+   * Auto scroll xuoosgn cuối mỗi lần next câu hỏi
+   */
   scrollToBottom(): void {
     try {
       this.myScrollContainer.nativeElement.scrollTop = this.myScrollContainer.nativeElement.scrollHeight;
     } catch (err) { }
   }
 
+  /**
+   * Có cho phép next bài hay không
+   * @param event 
+   */
   showButtonCotinue(event: any) {
     this.isDisableButton = false;
     this.isShowButtonActive = true;

@@ -20,7 +20,8 @@
     "lib": [
       "es2018",
       "dom"
-    ]
+    ],
+    "typeRoots": [ "node_modules/@types", "../src/typings.d.ts" ]
   },
   "angularCompilerOptions": {
     "strictInjectionParameters": true,

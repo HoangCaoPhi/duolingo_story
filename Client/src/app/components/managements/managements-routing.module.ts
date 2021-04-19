@@ -12,7 +12,7 @@ const routes: Routes = [
         loadChildren: () => import('../dashboard/dashboard.module').then(m => m.DashboardModule)
       },
       {
-        path: 'singup',
+        path: 'signup',
         loadChildren: () => import('../signup/signup.module').then(m => m.SignupModule)
       },
       {
