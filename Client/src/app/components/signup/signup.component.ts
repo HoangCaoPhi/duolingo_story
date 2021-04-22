@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { AuthService } from 'src/app/services/auth.service';
 declare var $: any;
 @Component({
   selector: 'app-signup',
@@ -12,7 +13,10 @@ export class SignupComponent implements OnInit {
   email: string;
   password: string;
 
-  constructor(private router: Router) { }
+  /** đã gửi mail kích hoạt hay chưa */
+  isRegisterSuccess = false;
+
+  constructor(private router: Router, private auth: AuthService) { }
 
   ngOnInit(): void {
     $('body').css('overflow', 'hidden');
@@ -29,10 +33,19 @@ export class SignupComponent implements OnInit {
   signUp(e: any) {
     let result = e.validationGroup.validate();
     if (result.isValid) {
-        // Submit values to the server
-        console.log(this.email);
-        console.log(this.password);
-        console.log(this.userName);
+
+        const formData = new FormData();
+        formData.append('username', this.userName);
+        formData.append('password', this.password);
+        formData.append('email', this.email);
+        
+        this.auth.register(formData).subscribe(
+          (data) => {
+            this.isRegisterSuccess = true;
+          }
+        )
+
+
     }
   }
 

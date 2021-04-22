@@ -5,7 +5,7 @@ import { StoryService } from 'src/app/services/story.service';
 import { takeUntil } from 'rxjs/operators';
 import { StoryType } from 'src/app/shared/enum/type-story';
 import { Location } from '@angular/common';
-import Speech from 'speak-tts'
+import Speech from 'speak-tts';
 
 declare var $: any;
 @Component({
@@ -43,7 +43,6 @@ export class StoriesDetailComponent extends BaseComponent implements OnInit {
   /** Tên câu chuyện */
   storyName: string;
 
-
   html = '';
   result = '';
   speech: any;
@@ -75,27 +74,24 @@ export class StoriesDetailComponent extends BaseComponent implements OnInit {
     this.speech = new Speech();
 
     if (this.speech.hasBrowserSupport()) {
-      this.speech.init({
-        'volume': 1,
-        'lang': 'en-GB',
-        'rate': 1,
-        'pitch': 1,
-        'voice': 'Google UK English Male',
-        'splitSentences': true,
-        'listeners': {
-          'onvoiceschanged': (voices: any) => {
-
-          }
-        }
-      }).then((data: any) => {
-        console.log("Speech is ready, voices are available", data)
-        this.speechData = data;
-        data.voices.forEach((voice: { name: string; lang: string; }) => {
-
-        });
-      }).catch((e: any) => {
-
-      })
+      this.speech
+        .init({
+          volume: 1,
+          lang: 'en-GB',
+          rate: 1,
+          pitch: 1,
+          voice: 'Google UK English Male',
+          splitSentences: true,
+          listeners: {
+            onvoiceschanged: (voices: any) => {},
+          },
+        })
+        .then((data: any) => {
+          console.log('Speech is ready, voices are available', data);
+          this.speechData = data;
+          data.voices.forEach((voice: { name: string; lang: string }) => {});
+        })
+        .catch((e: any) => {});
     }
   }
   /**
@@ -103,12 +99,12 @@ export class StoriesDetailComponent extends BaseComponent implements OnInit {
    * @param e Text audio
    */
   playAudio(e: string) {
-    this.speech.speak({
-      text: e,
-    }).then(() => {
-    }).catch((e: any) => {
-
-    })
+    this.speech
+      .speak({
+        text: e,
+      })
+      .then(() => {})
+      .catch((e: any) => {});
   }
 
   /**
@@ -117,7 +113,8 @@ export class StoriesDetailComponent extends BaseComponent implements OnInit {
    */
   getList(id: number) {
     this.isLoading = true;
-    this.storySV.getStory(id)
+    this.storySV
+      .getStory(id)
       .pipe(takeUntil(this._onDestroySub))
       .subscribe((data) => {
         this.isLoading = false;
@@ -125,7 +122,7 @@ export class StoriesDetailComponent extends BaseComponent implements OnInit {
         this.listStory = [this.listStoryData[this.index]];
         this.maxProgress = this.listStoryData?.length;
         this.iconComplete = data?.illustrations?.gilded;
-        this.imageURL =  data?.illustrations?.active;
+        this.imageURL = data?.illustrations?.active;
         this.storyName = data?.fromLanguageName;
       });
   }
@@ -137,10 +134,11 @@ export class StoriesDetailComponent extends BaseComponent implements OnInit {
     this.index++;
     this.listStory = [...this.listStory, this.listStoryData[this.index + 1]];
 
-    if (this.listStoryData[this.index + 1]?.type === StoryType.MULTIPLE_CHOICE) {
+    if (
+      this.listStoryData[this.index + 1]?.type === StoryType.MULTIPLE_CHOICE
+    ) {
       this.isDisableButton = true;
-    }
-    else {
+    } else {
       this.isDisableButton = false;
       this.isShowButtonActive = false;
     }
@@ -163,16 +161,36 @@ export class StoriesDetailComponent extends BaseComponent implements OnInit {
   scrollToBottom(): void {
     try {
       this.myScrollContainer.nativeElement.scrollTop = this.myScrollContainer.nativeElement.scrollHeight;
-    } catch (err) { }
+    } catch (err) {}
   }
 
   /**
    * Có cho phép next bài hay không
-   * @param event 
+   * @param event
    */
   showButtonCotinue(event: any) {
     this.isDisableButton = false;
     this.isShowButtonActive = true;
+    this.correctAudio();
   }
 
+  /**
+   * Phát audio trả lời chính xác
+   */
+  correctAudio() {
+    let audio = new Audio();
+    audio.src = '../../../../assets/audio/correct.mp3';
+    audio.load();
+    audio.play();
+  }
+
+  /**
+   * Phát audio trả lời sai đáp án
+   */
+  wrongAudio() {
+    let audio = new Audio();
+    audio.src = '../../../../assets/audio/wrong.mp3';
+    audio.load();
+    audio.play();
+  }
 }

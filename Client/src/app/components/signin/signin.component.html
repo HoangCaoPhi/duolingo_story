@@ -1,47 +1,75 @@
 <div class="wrap-form">
-    <div class="login-form dis-flex">
-
-        <div class="dis-flex justify-content-center m-bottom-16">
-            <img src="http://d35aaqx5ub95lt.cloudfront.net/images/duolingo-touch-icon2.png" alt=""
-                style=" width: 40px; height: 40px;">
-            <div class="dis-flex align-item-center logo-name">ĐĂNG NHẬP</div>
-        </div>
-
-        <!-- Nhập email -->
-        <div class="email dis-flex justify-content-center">
-            <dx-text-box placeholder="Nhập email" [width]="304" [height]="48" [(value)]="email">
-                <dx-validator>
-                    <dxi-validation-rule type="required" message="Email không được để trống"></dxi-validation-rule>
-                    <dxi-validation-rule type="email" message="Email không hợp lệ"></dxi-validation-rule>
-                </dx-validator>
-            </dx-text-box>
-        </div>
-
-        <!-- Nhập mật khẩu -->
-        <div class="pass dis-flex justify-content-center m-top-16">
-            <dx-text-box mode="password" placeholder="Nhập mật khẩu" [showClearButton]="true" [width]="304"
-                [(value)]="password" [height]="48">
-
-                <dx-validator>
-                    <dxi-validation-rule type="required" message="Mật khẩu không được để trống"></dxi-validation-rule>
-                </dx-validator>
-
-            </dx-text-box>
-        </div>
-
-        <!-- Đăng nhập -->
-        <div class="sign dis-flex justify-content-center m-top-16">
-            <dx-button stylingMode="contained" text="Đăng nhập" type="normal" [width]="304" (onClick)="signIn($event)">
-            </dx-button>
-        </div>
-
-        <!-- Đăng ký tài khoản -->
-        <div class="sign dis-flex justify-content-center m-top-16">
-            <span>Chưa có tài khoản?</span>
-            <a href="" (click)="signUp()">Đăng ký</a>
-        </div>
-
+  <div class="login-form dis-flex">
+    <div class="dis-flex justify-content-center m-bottom-16">
+      <img
+        src="http://d35aaqx5ub95lt.cloudfront.net/images/duolingo-touch-icon2.png"
+        alt=""
+        style="width: 40px; height: 40px"
+      />
+      <div class="dis-flex align-item-center logo-name">ĐĂNG NHẬP</div>
     </div>
 
-    <div class="icon-close cursor-pointer" (click)="goToHome()"></div>
+    <!-- Nhập email -->
+    <div class="email dis-flex justify-content-center">
+      <dx-text-box
+        placeholder="Nhập tên người dùng"
+        [width]="304"
+        [height]="48"
+        [(value)]="email"
+      >
+        <dx-validator>
+          <dxi-validation-rule
+            type="required"
+            message="Tên người dùng không được để trống"
+          ></dxi-validation-rule>
+          <!-- <dxi-validation-rule type="email" message="Email không hợp lệ"></dxi-validation-rule> -->
+        </dx-validator>
+      </dx-text-box>
+    </div>
+
+    <!-- Nhập mật khẩu -->
+    <div class="pass dis-flex justify-content-center m-top-16">
+      <dx-text-box
+        mode="password"
+        placeholder="Nhập mật khẩu"
+        [showClearButton]="true"
+        [width]="304"
+        [(value)]="password"
+        [height]="48"
+      >
+        <dx-validator>
+          <dxi-validation-rule
+            type="required"
+            message="Mật khẩu không được để trống"
+          ></dxi-validation-rule>
+        </dx-validator>
+      </dx-text-box>
+    </div>
+
+    <div class="email dis-flex justify-content-center m-top-16" *ngIf="isShowError">
+       <div class="error">
+           Tài khoản hoặc mật khẩu không đúng
+       </div>
+    </div>
+
+    <!-- Đăng nhập -->
+    <div class="sign dis-flex justify-content-center m-top-16">
+      <dx-button
+        stylingMode="contained"
+        text="Đăng nhập"
+        type="normal"
+        [width]="304"
+        (onClick)="signIn($event)"
+      >
+      </dx-button>
+    </div>
+
+    <!-- Đăng ký tài khoản -->
+    <div class="sign dis-flex justify-content-center m-top-16">
+      <span>Chưa có tài khoản?</span>
+      <a href="" (click)="signUp()">Đăng ký</a>
+    </div>
+  </div>
+
+  <div class="icon-close-black cursor-pointer" (click)="goToHome()"></div>
 </div>

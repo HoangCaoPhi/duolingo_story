@@ -1,5 +1,8 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { takeUntil } from 'rxjs/operators';
+import { BaseComponent } from 'src/app/base/base-component';
+import { AuthService } from 'src/app/services/auth.service';
 
 declare var $: any;
 @Component({
@@ -7,12 +10,15 @@ declare var $: any;
   templateUrl: './signin.component.html',
   styleUrls: ['./signin.component.scss']
 })
-export class SigninComponent implements OnInit, OnDestroy {
+export class SigninComponent extends BaseComponent implements OnInit, OnDestroy {
 
   email: string;
   password: string;
+  isShowError = false;
 
-  constructor(private router: Router) { }
+  constructor(private router: Router, private auth: AuthService) { 
+    super();
+  }
 
   ngOnInit(): void {
     $('body').css('overflow', 'hidden');
@@ -32,8 +38,27 @@ export class SigninComponent implements OnInit, OnDestroy {
     let result = e.validationGroup.validate();
     if (result.isValid) {
       // Submit values to the server
-      console.log(this.email);
-      console.log(this.password);
+      this.auth.checkAuth(this.email, this.password)
+      .pipe(takeUntil(this._onDestroySub))
+      .subscribe(
+        (data) => {
+          console.log(data);
+          this.isShowError = false;
+          this.auth.getLogin().subscribe(
+            (data) => {
+              console.log(data);
+            }
+          )
+        },
+        (err)=> {
+          this.auth.getLogin().subscribe(
+            (data) => {
+              console.log(data);
+            }
+          )
+        }
+      )
+
     }
   }
 
