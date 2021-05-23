@@ -14,12 +14,19 @@ export class TranferdataService {
   @Input()
   languageData = new EventEmitter<string>();
 
+  @Input()
+  userName = new EventEmitter<string>();
+
   isShowItem(obj: any) {
     this.arrangeItemData.emit(obj)
   }
 
   tranferListLanguage(obj: any) {
     this.languageData.emit(obj)
+  }
+
+  tranferUserInfo(userName: string) {
+    this.userName.emit(userName);
   }
 
 }

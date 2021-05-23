@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { PointToPhrase } from '../../models/point-to-phrase/point-to-phrase';
 import { Selected } from '../../models/point-to-phrase/selected';
 
@@ -41,6 +41,8 @@ export class PointToPhraseComponent implements OnInit {
       this.textAnwer = this.listQuestion[value.correctAnswerIndex].text;
     }
   }
+  /** Bỏ disable nút tiếp tục khi trả lời câu hỏi đúng */
+  @Output() isShowContinue = new EventEmitter<boolean>();
 
   //#endregion
   constructor() { }
@@ -53,6 +55,7 @@ export class PointToPhraseComponent implements OnInit {
     if (word === this.textAnwer) {
       this.selectedPhrase[postion].isWrong = false;
       this.selectedPhrase[postion].isCorrect = true;
+      this.isShowContinue.emit(true);
     }
     else {
       this.selectedPhrase[postion].isWrong = true;

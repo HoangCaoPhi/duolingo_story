@@ -6,6 +6,7 @@ import { takeUntil } from 'rxjs/operators';
 import { StoryType } from 'src/app/shared/enum/type-story';
 import { Location } from '@angular/common';
 import Speech from 'speak-tts';
+import { ToastrService } from 'ngx-toastr';
 
 declare var $: any;
 @Component({
@@ -55,9 +56,10 @@ export class StoriesDetailComponent extends BaseComponent implements OnInit {
     private storySV: StoryService,
     private activeRouter: ActivatedRoute,
     private router: Router,
-    private _location: Location
+    private _location: Location,
+    protected toastr: ToastrService
   ) {
-    super();
+    super(toastr);
     // this.imageURL = this.router.getCurrentNavigation()?.extras.state?.imageURL;
     this.initTextToSpeech();
   }
@@ -83,15 +85,15 @@ export class StoriesDetailComponent extends BaseComponent implements OnInit {
           voice: 'Google UK English Male',
           splitSentences: true,
           listeners: {
-            onvoiceschanged: (voices: any) => {},
+            onvoiceschanged: (voices: any) => { },
           },
         })
         .then((data: any) => {
           console.log('Speech is ready, voices are available', data);
           this.speechData = data;
-          data.voices.forEach((voice: { name: string; lang: string }) => {});
+          data.voices.forEach((voice: { name: string; lang: string }) => { });
         })
-        .catch((e: any) => {});
+        .catch((e: any) => { });
     }
   }
   /**
@@ -103,8 +105,8 @@ export class StoriesDetailComponent extends BaseComponent implements OnInit {
       .speak({
         text: e,
       })
-      .then(() => {})
-      .catch((e: any) => {});
+      .then(() => { })
+      .catch((e: any) => { });
   }
 
   /**
@@ -131,12 +133,27 @@ export class StoriesDetailComponent extends BaseComponent implements OnInit {
    * Xử lý khi ấn tiếp tục
    */
   continue() {
-    this.index++;
-    this.listStory = [...this.listStory, this.listStoryData[this.index + 1]];
 
+    if (this.isCompleteStory) {
+      this.closeStory();
+      return;
+    }
+
+    this.index++;
+
+    if (this.index === this.listStoryData.length) {
+      this.isCompleteStory = true;
+    }
+
+    if (this.index <= this.listStoryData.length) {
+      this.listStory = [...this.listStory, this.listStoryData[this.index + 1]];
+    }
+
+    const listDisable = [StoryType.MULTIPLE_CHOICE, StoryType.POINT_TO_PHRASE, StoryType.ARRANGE, StoryType.MATCH];
     if (
-      this.listStoryData[this.index + 1]?.type === StoryType.MULTIPLE_CHOICE
+      !this.isDisableButton && listDisable.includes(this.listStoryData[this.index + 1]?.type)
     ) {
+      this.isShowButtonActive = false;
       this.isDisableButton = true;
     } else {
       this.isDisableButton = false;
@@ -161,7 +178,7 @@ export class StoriesDetailComponent extends BaseComponent implements OnInit {
   scrollToBottom(): void {
     try {
       this.myScrollContainer.nativeElement.scrollTop = this.myScrollContainer.nativeElement.scrollHeight;
-    } catch (err) {}
+    } catch (err) { }
   }
 
   /**

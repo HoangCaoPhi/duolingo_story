@@ -1,18 +1,23 @@
-import { HttpClient } from '@angular/common/http';
+
 import { Injectable } from '@angular/core';
-import { Auth } from '../shared/models/auth/auth';
+import { ConfigService } from 'src/common/config.service';
+import { HttpService } from 'src/common/http.service';
+import { AppConfig } from '../shared/models/config/app.config';
+import { User } from '../shared/models/user/user';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpService) { }
 
-  checkAuth(userName: string, passWord: string) {
-    return this.http.get(
-      `https://carex.uber.space/stories/backend/user/check_auth.php?username=${userName}&password=${passWord}`
-    );
+  static userName: string;
+
+  hostApi = (ConfigService.settings as AppConfig).apiServer;
+
+  checkAuth(user: any) {
+    return this.http.post(`${this.hostApi}/User/checkUser `, user); 
   }
 
   getLogin() {
@@ -21,9 +26,8 @@ export class AuthService {
     );
   }
 
-  register(formData: any) {
-    return this.http.post(
-      `https://carex.uber.space/stories/backend/user/register_send.php`, formData
-    );
+  register(user: any) {
+    return this.http.post(`${this.hostApi}/User/adduser `, user);
   }
+  
 }

@@ -12,16 +12,18 @@
   <div class="nav-right">
 
     <div class="flag m-right-36 m-top-6 cursor-pointer" id="flag" (click)="openLang()">
-      <div id="flag-image" [class]="currentLanguage" [style]="currentStyle"></div>
+      <div id="flag-image" [(class)]="currentLanguage" [style]="currentStyle"></div>
     </div>
 
-    <dx-button stylingMode="contained" text="ĐĂNG NHẬP" [width]="150" (click)="singIn()">
+    <div class="user-name m-right-16">
+       {{ userName }}
+    </div>
+
+    <dx-button stylingMode="contained" text="ĐĂNG NHẬP" [width]="150" (click)="singIn()" *ngIf="!userName">
     </dx-button>
 
-    <!-- <div class="avt cursor-pointer m-right-36">
-      <img src="https://lh3.googleusercontent.com/ogw/ADGmqu-O_tVjv5gS8LWWzJ6dCtp57JlEGeEUfhfWkn3K=s32-c-mo" alt=""
-        srcset="">
-    </div> -->
+    <dx-button stylingMode="contained" text="ĐĂNG XUẤT" [width]="150" (click)="singOut()" *ngIf="userName">
+    </dx-button>
 
   </div>
 </div>

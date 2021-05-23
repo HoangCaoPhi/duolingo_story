@@ -1,12 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using AutoMapper;
-using DoulingoStories.DTO;
-using DoulingoStories.Models;
-using DoulingoStories.Repository;
-using DoulingoStories.Repository.Course;
+﻿using DoulingoStories.Repository;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 

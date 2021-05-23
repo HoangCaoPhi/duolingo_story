@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Match } from '../../models/match/match';
 import { PraseMatch } from '../../models/match/phrase-match';
 
@@ -51,6 +51,12 @@ export class MatchComponent implements OnInit {
     this.shuffle(this.listWord);
   }
 
+  /** Bỏ disable nút tiếp tục khi trả lời câu hỏi đúng */
+  @Output() isShowContinue = new EventEmitter<boolean>();
+
+  /** Số câu trả lời đúng */
+  numberCorrect = 0;
+
   constructor() { }
 
   ngOnInit(): void {
@@ -100,10 +106,15 @@ export class MatchComponent implements OnInit {
       });
 
       if (this.arrayWord[1].Value === wordCompare) {
+        this.numberCorrect++;
         this.listWord[this.arrayWord[0].Postion].IsSelected = false;
         this.listWord[this.arrayWord[1].Postion].IsSelected = false;
         this.listWord[this.arrayWord[0].Postion].IsExact = true;
         this.listWord[this.arrayWord[1].Postion].IsExact = true;
+
+        if(this.numberCorrect === this.fallbackHints.length) {
+          this.isShowContinue.emit(true);
+        }
       }
       else {
         this.listWord[this.arrayWord[0].Postion].IsWrong = true;

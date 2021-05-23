@@ -7,16 +7,21 @@
     </div>
 
     <!-- Danh sách ngôn ngữ -->
-    <div class="language dis-flex justify-content-center" *ngIf="isShowListLanguage">
-        <div class="box" *ngFor="let item of listLanguage" (click)="openStory(item)">
-            <div class="flag" [class]="item?.name"></div>
+    <div class="language dis-flex justify-content-center"
+         *ngIf="isShowListLanguage">
+        <div class="box"
+             *ngFor="let item of listLanguage"
+             (click)="openStory(item)">
+            <div class="flag"
+                 [class]="item?.name"></div>
             <div class="name-nation"> {{ item?.name }} </div>
         </div>
     </div>
     <!-- End danh sách ngôn ngũ -->
 
     <!-- Loading -->
-    <div class="content-stories" *ngIf="isLoading && isShowListLanguage">
+    <div class="content-stories"
+         *ngIf="isLoading && isShowListLanguage">
         <div class="stories-detail center-horizontal">
             <div class="stories box-thumbnail"></div>
             <div class="stories box-thumbnail"></div>
@@ -31,6 +36,7 @@
     <!-- End loading -->
 
     <div class="language">
-        <app-stories *ngIf="!isShowListLanguage" (isHiddenLang)="hiddenLang($event)"></app-stories>
+        <app-stories *ngIf="!isShowListLanguage"
+                     (isHiddenLang)="hiddenLang($event)"></app-stories>
     </div>
 </div>

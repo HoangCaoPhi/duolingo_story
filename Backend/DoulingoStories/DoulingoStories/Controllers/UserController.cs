@@ -49,7 +49,7 @@ namespace DoulingoStories.Controllers
         [Route("checkuser")]
         public IActionResult Check([FromBody] User user)
         {
-            bool json = _userRepository.CheckUser(user.username, user.password);
+            RestAPI json = _userRepository.CheckUser(user.username, user.password);
             //IEnumerable<CourseDTO> dtos = foodItems
             //     .Select(x => _mapper.Map<CourseDTO>(x));
 

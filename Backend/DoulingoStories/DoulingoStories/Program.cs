@@ -40,5 +40,5 @@ namespace DoulingoStories
                 {
                     webBuilder.UseStartup<Startup>();
                 });
-    }
+    }   
 }

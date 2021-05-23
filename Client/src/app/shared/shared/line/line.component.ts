@@ -1,4 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { ToastrService } from 'ngx-toastr';
 import { takeUntil } from 'rxjs/operators';
 import { BaseComponent } from 'src/app/base/base-component';
 import { TranferdataService } from 'src/app/services/tranferdata.service';
@@ -75,8 +76,8 @@ export class LineComponent extends BaseComponent implements OnInit {
   @Output() emitTextAudio = new EventEmitter<string>();
 
   //#endregion
-  constructor(private tranferDataSV: TranferdataService) {
-    super();
+  constructor(private tranferDataSV: TranferdataService, protected toastr: ToastrService) {
+    super(toastr);
   }
 
   ngOnInit(): void {

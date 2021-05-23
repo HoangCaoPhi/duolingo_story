@@ -28,8 +28,11 @@ namespace DoulingoStories.Repository.Language
         {
             try
             {
-                IQueryable<Models.Language> _allItems = _DouligoDbContext.Language.Where(w=>w.Public == 1).OrderBy(queryParameters.OrderBy,
-               queryParameters.IsDescending());
+               // IQueryable<Models.Language> _allItems = _DouligoDbContext.Language.Where(w=>w.Public == 1).OrderBy(queryParameters.OrderBy,
+               //queryParameters.IsDescending());
+
+                IQueryable<Models.Language> _allItems = _DouligoDbContext.Language.Where(w => w.Public == 1);
+
                 return _allItems
                .Skip(queryParameters.PageCount * (queryParameters.Page - 1))
                .Take(queryParameters.PageCount);
@@ -147,7 +150,7 @@ namespace DoulingoStories.Repository.Language
         public static DbContextOptions<DoulingoDbContext> GetOptions()
         {
             DbContextOptionsBuilder<DoulingoDbContext> builder = new DbContextOptionsBuilder<DoulingoDbContext>();
-            builder.UseMySql("Server=127.0.0.1;uid=root;Database=doulingo_stories;pwd=;Convert Zero Datetime=True");
+            builder.UseMySql("Server=127.0.0.1;uid=root;Database=doulingo_stories;pwd=123456;Convert Zero Datetime=True");
 
             return builder.Options;
         }

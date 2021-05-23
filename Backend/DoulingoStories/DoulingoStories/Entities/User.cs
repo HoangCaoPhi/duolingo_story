@@ -17,4 +17,16 @@ namespace DoulingoStories.Models
         public int activated { get; set; }
         public string activation_link { get; set; }
     }
+    public class RestAPI
+    {
+        public int StatusCode { get; set; }
+        public UesrInfo Data { get; set; }
+    }
+    public class UesrInfo
+    {
+        public string username { get; set; }
+        public string email { get; set; }
+    }
+
+
 }

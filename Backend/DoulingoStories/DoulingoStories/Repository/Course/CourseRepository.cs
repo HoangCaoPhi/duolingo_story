@@ -54,7 +54,7 @@ namespace DoulingoStories.Repository.Course
             try
             {
                 
-                string connectionString = ("Server=127.0.0.1;uid=root;Database=doulingo_stories;pwd=");
+                string connectionString = ("Server=127.0.0.1;uid=root;Database=doulingo_stories;pwd=123456");
                 string commandText = @"SELECT course.id, course.name, l1.short AS fromLanguage, l1.name AS fromLanguageName, l2.short AS learningLanguage, l2.name AS learningLanguageName, COUNT(story.id) count, course.public, course.official FROM course
 LEFT JOIN language l1 ON l1.id = course.fromLanguage
 LEFT JOIN language l2 ON l2.id = course.learningLanguage
@@ -118,7 +118,7 @@ GROUP BY course.id";
             try
             {
 
-                string connectionString = ("Server=127.0.0.1;uid=root;Database=doulingo_stories;pwd=");
+                string connectionString = ("Server=127.0.0.1;uid=root;Database=doulingo_stories;pwd=123456");
                 string commandText = @"SELECT story.id, story.set_id, story.set_index, story.image, story.image_done, story.name, 
 story.xp, name_base FROM story
 JOIN language l1 ON story.lang = l1.id AND l1.short = "+"\""+lang + "\""

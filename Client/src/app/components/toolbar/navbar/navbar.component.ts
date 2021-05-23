@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 import { takeUntil } from 'rxjs/operators';
 import { BaseComponent } from 'src/app/base/base-component';
+import { AuthService } from 'src/app/services/auth.service';
 import { TranferdataService } from 'src/app/services/tranferdata.service';
 
 @Component({
@@ -19,8 +21,10 @@ export class NavbarComponent extends BaseComponent implements OnInit {
   currentLanguage: string;
   currentStyle: string;
 
-  constructor(private router: Router, private tranferDataSV: TranferdataService) {
-    super();
+  userName: string;
+
+  constructor(private router: Router, private tranferDataSV: TranferdataService, protected toastr: ToastrService) {
+    super(toastr);
   }
 
   ngOnInit(): void {
@@ -28,8 +32,27 @@ export class NavbarComponent extends BaseComponent implements OnInit {
       (data: any) => {
         this.listLanguage = data;
         this.currentLanguage = this.listLanguage[0].name;
+        this.currentStyle = `background-position: 0px ${this.listLanguage[0].flag}px`;
       }
     )
+
+    this.tranferDataSV.userName.subscribe(
+      (data: string) => {
+        this.userName = data;
+      }
+    )
+
+    if(AuthService.userName) {
+      this.userName = AuthService.userName;
+    }
+    else {
+      const userInfo = localStorage.getItem('UserInfo');
+      if(userInfo) {
+        this.userName = JSON.parse(userInfo)?.username;
+      }
+    }
+
+
   }
 
   openHome() {
@@ -56,5 +79,11 @@ export class NavbarComponent extends BaseComponent implements OnInit {
 
   singIn() {
     this.router.navigate(['/signin']);
+  }
+
+  singOut() {
+    AuthService.userName = "";
+    localStorage.removeItem('UserInfo');
+    window.location.reload();
   }
 }

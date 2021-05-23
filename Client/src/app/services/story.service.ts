@@ -1,21 +1,23 @@
-import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { ConfigService } from 'src/common/config.service';
+import { HttpService } from 'src/common/http.service';
+import { AppConfig } from '../shared/models/config/app.config';
 import { Story } from '../shared/models/Story';
 
 @Injectable({
   providedIn: 'root',
 })
 export class StoryService {
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpService) {}
+
+  hostApi = (ConfigService.settings as AppConfig).apiServer;
 
   /**
    * Lấy về danh sách Story
    */
   getList(lang: string, lang_base: string): Observable<Story[]> {
-    return this.http.get<Story[]>(
-      `https://carex.uber.space/stories/backend/stories/get_list.php?lang=${lang}&lang_base=${lang_base}`
-    );
+    return this.http.get(`${this.hostApi}/Course/getListCourse?learnlang=${lang}&fromlang=${lang_base}`); 
   }
 
   /**
@@ -23,9 +25,7 @@ export class StoryService {
    * @param id ID cua story
    */
   getStory(id: number): Observable<any> {
-    return this.http.get<Story[]>(
-      `https://carex.uber.space/stories/backend/stories/get_story_json.php?id=${id}`
-    );
+    return this.http.get(`${this.hostApi}/Story/json/${id}`); 
   }
 
   /**
@@ -34,9 +34,7 @@ export class StoryService {
    * @returns 
    */
   getLanguages(): Observable<any> {
-    return this.http.get<any[]>(
-      `  https://carex.uber.space/stories/backend/stories/get_languages.php`
-    );
+    return this.http.get(`${this.hostApi}/Language/getall`);
   }
 
 

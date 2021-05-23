@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 import { takeUntil } from 'rxjs/operators';
 import { BaseComponent } from 'src/app/base/base-component';
 import { StoryService } from 'src/app/services/story.service';
@@ -27,8 +28,11 @@ export class DashboardComponent extends BaseComponent implements OnInit {
 
   //#region Contructor
 
-  constructor(private router: Router, private storySV: StoryService, private route: ActivatedRoute, private tranferData: TranferdataService) {
-    super();
+  constructor(private router: Router,
+    private storySV: StoryService,
+    private route: ActivatedRoute,
+    private tranferData: TranferdataService, protected toastr: ToastrService) {
+    super(toastr);
   }
 
   ngOnInit(): void {
@@ -36,7 +40,7 @@ export class DashboardComponent extends BaseComponent implements OnInit {
 
     this.route.queryParams
       .subscribe(params => {
-        if(params.lang) {
+        if (params.lang) {
           this.isShowListLanguage = false;
         }
       }

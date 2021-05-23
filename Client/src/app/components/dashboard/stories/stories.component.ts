@@ -1,5 +1,6 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 import { takeUntil } from 'rxjs/operators';
 import { BaseComponent } from 'src/app/base/base-component';
 import { StoryService } from 'src/app/services/story.service';
@@ -18,8 +19,8 @@ export class StoriesComponent extends BaseComponent implements OnInit {
 
   @Output() isHiddenLang = new EventEmitter<boolean>();
 
-  constructor(private storySV: StoryService, private router: Router, private route: ActivatedRoute) {
-    super();
+  constructor(private storySV: StoryService, private router: Router, private route: ActivatedRoute, protected toastr: ToastrService) {
+    super(toastr);
   }
 
   ngOnInit(): void {

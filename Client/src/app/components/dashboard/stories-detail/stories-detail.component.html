@@ -1,59 +1,54 @@
-<div class="story-detail" #story>
+<div class="story-detail"
+     #story>
   <div class="header">
-    <div class="icon-close cursor-pointer" (click)="closeStory()"></div>
+    <div class="icon-close cursor-pointer"
+         (click)="closeStory()"></div>
     <!-- Thanh tiến trình -->
     <div class="progress">
-      <dx-progress-bar
-        #progressBar
-        id="progress-bar-status"
-        width="100%"
-        [class.complete]="maxProgress"
-        [min]="minProgress"
-        [max]="maxProgress"
-        [value]="index"
-      >
+      <dx-progress-bar #progressBar
+                       id="progress-bar-status"
+                       width="100%"
+                       [class.complete]="maxProgress"
+                       [min]="minProgress"
+                       [max]="maxProgress"
+                       [value]="index">
       </dx-progress-bar>
     </div>
     <!-- End thanh tiến trình -->
   </div>
 
-  <div class="main" *ngIf="!isLoading">
+  <div class="main"
+       *ngIf="!isLoading">
     <div class="image dis-flex justify-content-center">
-      <img [src]="imageURL" alt="" style="width: 132px" />
+      <img [src]="imageURL"
+           alt
+           style="width: 132px">
     </div>
 
     <ng-container *ngFor="let item of listStory">
-      <!-- Tiêu đề  -->
-      <ng-container
-        *ngIf="item?.type === storyType.LINE && item?.line?.type === 'TITLE'"
-      >
+      <!-- Tiêu đề -->
+      <ng-container *ngIf="item?.type === storyType.LINE && item?.line?.type === 'TITLE'">
         <div class="dis-flex justify-content-center">
-          <app-line
-            [lineObject]="item"
-            (emitTextAudio)="playAudio($event)"
-          ></app-line>
+          <app-line [lineObject]="item"
+                    (emitTextAudio)="playAudio($event)">
+          </app-line>
         </div>
       </ng-container>
 
       <!-- Nhân vật kèm theo lời thoại -->
-      <ng-container
-        *ngIf="item?.type === storyType.LINE && item?.line?.type !== 'TITLE'"
-      >
+      <ng-container *ngIf="item?.type === storyType.LINE && item?.line?.type !== 'TITLE'">
         <div class="question dis-flex">
-          <app-line
-            [lineObject]="item"
-            (emitTextAudio)="playAudio($event)"
-          ></app-line>
+          <app-line [lineObject]="item"
+                    (emitTextAudio)="playAudio($event)">
+          </app-line>
         </div>
       </ng-container>
 
       <!-- Cậu hỏi nhiều lựa chọn -->
       <ng-container *ngIf="item?.type === storyType.MULTIPLE_CHOICE">
         <div class="question dis-flex">
-          <app-multipl-choice
-            [objectMutilpleChoice]="item"
-            (isShowContinue)="showButtonCotinue($event)"
-          >
+          <app-multipl-choice [objectMutilpleChoice]="item"
+                              (isShowContinue)="showButtonCotinue($event)">
           </app-multipl-choice>
         </div>
       </ng-container>
@@ -61,86 +56,93 @@
       <!-- Dạng câu hỏi điền từ -->
       <ng-container *ngIf="item?.type === storyType.CHALLENGE_PROMPT">
         <div class="question dis-flex">
-          <app-challenge-prompt></app-challenge-prompt>
+          <app-challenge-prompt>
+          </app-challenge-prompt>
         </div>
       </ng-container>
 
       <!-- Dạng câu hỏi chọn từ -->
       <ng-container *ngIf="item?.type === storyType.POINT_TO_PHRASE">
         <div class="question dis-flex">
-          <app-point-to-phrase
-            [objectPointToPrase]="item"
-          ></app-point-to-phrase>
+          <app-point-to-phrase [objectPointToPrase]="item"
+                               (isShowContinue)="showButtonCotinue($event)">
+          </app-point-to-phrase>
         </div>
       </ng-container>
 
       <!-- Dạng câu hỏi tìm từ giống nhau -->
       <ng-container *ngIf="item?.type === storyType.MATCH">
         <div class="question dis-flex">
-          <app-match [objectMatch]="item"></app-match>
+          <app-match [objectMatch]="item"
+                     (isShowContinue)="showButtonCotinue($event)">
+          </app-match>
         </div>
       </ng-container>
 
       <!-- Hiển thị tiêu đề của sắp xếp -->
       <ng-container *ngIf="item?.type === storyType.CHALLENGE_PROMPT">
         <div class="question dis-flex">
-          <app-challenge-prompt [objectChallenge]="item"></app-challenge-prompt>
+          <app-challenge-prompt [objectChallenge]="item">
+          </app-challenge-prompt>
         </div>
       </ng-container>
 
-      <!-- Sắp xếp từ  -->
+      <!-- Sắp xếp từ -->
       <ng-container *ngIf="item?.type === storyType.ARRANGE">
         <div class="question dis-flex">
-          <app-arrange [objectArrange]="item"></app-arrange>
+          <app-arrange [objectArrange]="item"
+                       (isShowContinue)="showButtonCotinue($event)">
+          </app-arrange>
         </div>
       </ng-container>
     </ng-container>
 
     <!-- Hoàn thành câu chuyện -->
-    <div
-      class="complete dis-flex align-item-center flex-col"
-      *ngIf="isCompleteStory"
-    >
+    <div class="complete dis-flex align-item-center flex-col"
+         *ngIf="isCompleteStory">
       <div class="img">
-        <img [src]="iconComplete" alt="" srcset="" />
+        <img [src]="iconComplete"
+             alt
+             srcset>
       </div>
-      <div class="text-complete m-top-16">Câu chuyện hoàn thành</div>
+      <div class="text-complete m-top-16">
+        Câu chuyện hoàn thành</div>
       <div class="des-complete m-top-24">
-        Bạn đã hoàn thành câu chuyện {{ storyName }}
+        Bạn đã hoàn thành câu chuyện {{
+        storyName }}
       </div>
     </div>
+
   </div>
 
-  <div
-    class="main dis-flex justify-content-center"
-    style="height: 60vh; align-items: center"
-    *ngIf="isLoading"
-  >
+  <div class="main dis-flex justify-content-center"
+       style="height: 60vh; align-items: center"
+       *ngIf="isLoading">
     <div class="lds-dual-ring"></div>
   </div>
 
   <!-- Footer -->
-  <div
-    class="footer dis-flex"
-    [ngClass]="{ 'footer-active': isShowButtonActive }"
-  >
+  <div class="footer dis-flex"
+       [ngClass]="{ 'footer-active': isShowButtonActive }">
     <div class="dis-flex">
-      <div class="wrap-icon m-left-48" *ngIf="isShowButtonActive">
+      <div class="wrap-icon m-left-48"
+           *ngIf="isShowButtonActive">
         <div class="icon-tick"></div>
       </div>
 
-      <div class="text-footer" *ngIf="isShowButtonActive">Đáp án chính xác</div>
+      <div class="text-footer"
+           *ngIf="isShowButtonActive">
+        Đáp án chính xác
+      </div>
     </div>
 
     <div class="continue">
-      <dx-button
-        stylingMode="contained"
-        text="Tiếp tục"
-        [width]="150"
-        (click)="continue()"
-        [ngClass]="{ disable: isDisableButton }"
-        [disabled]="isDisableButton"
-      >
+      <dx-button stylingMode="contained"
+                 text="Tiếp tục"
+                 [width]="150"
+                 (click)="continue()"
+                 [ngClass]="{ disable: isDisableButton }"
+                 [disabled]="isDisableButton">
       </dx-button>
       <!-- <dx-button stylingMode="contained" text="Continue" [width]="150" (click)="continue()"
       >

@@ -16,4 +16,14 @@ export class BaseService {
   ) {
     this.hostApi = (ConfigService.settings as AppConfig).apiServer;
   }
+
+  // lấy về chuỗi url
+  getApiURL() {
+    const lastCharacter = this.hostApi.substr(this.hostApi.length - 1);
+    if (lastCharacter === '/') {
+      return `${this.hostApi}${this.controller}`;
+    }
+    return `${this.hostApi}/${this.controller}`;
+  }
+
 }

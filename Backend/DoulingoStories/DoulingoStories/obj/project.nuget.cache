@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "uH7CaDHxer6X/K/JjAVABGYEBa3fcWbmXUW6Co8iOYQ5aUgFKxgQ8yBMT4lIwnlL4ZWKAwtHZ/CD5f9uUhKJKw==",
+  "dgSpecHash": "sw1VeIgDKy/apmT/eGcSbiJrpTT8lrvvCKl0KJUX2dHwJ2b6c0ORPZNThFi2A5v4S6M7y9DHyOoEUcX5SUekhw==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Admin\\Desktop\\doulingo\\Duolingo-Clone\\Backend\\DoulingoStories\\DoulingoStories\\DoulingoStories.csproj",
+  "projectFilePath": "D:\\Khóa luận tốt nghiệp\\Duolingo-Clone\\Backend\\DoulingoStories\\DoulingoStories\\DoulingoStories.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Admin\\.nuget\\packages\\automapper\\10.1.1\\automapper.10.1.1.nupkg.sha512",
     "C:\\Users\\Admin\\.nuget\\packages\\microsoft.bcl.asyncinterfaces\\1.1.1\\microsoft.bcl.asyncinterfaces.1.1.1.nupkg.sha512",
@@ -27,7 +27,7 @@
     "C:\\Users\\Admin\\.nuget\\packages\\microsoft.extensions.primitives\\3.1.8\\microsoft.extensions.primitives.3.1.8.nupkg.sha512",
     "C:\\Users\\Admin\\.nuget\\packages\\mysqlconnection\\1.0.1\\mysqlconnection.1.0.1.nupkg.sha512",
     "C:\\Users\\Admin\\.nuget\\packages\\mysqlconnector\\0.69.9\\mysqlconnector.0.69.9.nupkg.sha512",
-    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder\\newtonsoft.json\\11.0.2\\newtonsoft.json.11.0.2.nupkg.sha512",
+    "C:\\Users\\Admin\\.nuget\\packages\\newtonsoft.json\\11.0.2\\newtonsoft.json.11.0.2.nupkg.sha512",
     "C:\\Users\\Admin\\.nuget\\packages\\pomelo.entityframeworkcore.mysql\\3.2.0\\pomelo.entityframeworkcore.mysql.3.2.0.nupkg.sha512",
     "C:\\Users\\Admin\\.nuget\\packages\\pomelo.jsonobject\\2.2.1\\pomelo.jsonobject.2.2.1.nupkg.sha512",
     "C:\\Users\\Admin\\.nuget\\packages\\system.collections.immutable\\1.7.1\\system.collections.immutable.1.7.1.nupkg.sha512",

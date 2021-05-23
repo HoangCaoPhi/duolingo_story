@@ -32,13 +32,14 @@ namespace DoulingoStories
             Configuration = configuration;
         }
 
-        
-
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            //services.AddDbContext<DoulingoDbContext>(opt => opt.UseInMemoryDatabase("FoodDatabase"));
+            services.AddCors();
+            services.AddControllers();
+
             string s = Configuration.GetConnectionString("DefaultConnection");
+
             services.AddDbContext<DoulingoDbContext>(options => options.UseMySql(Configuration.GetConnectionString("DefaultConnection")));
             services.AddScoped<ICourseRepository, CourseRepository>();
             services.AddScoped<ILanguageRepository, LanguageRepository>();
@@ -51,10 +52,6 @@ namespace DoulingoStories
                 var factory = x.GetRequiredService<IUrlHelperFactory>();
                 return factory.GetUrlHelper(actionContext);
             });
-
-            services.AddControllers();
-
-            //services.AddAutoMapper(new[] { typeof(CourseMappings) });
 
 
         }
@@ -71,17 +68,20 @@ namespace DoulingoStories
 
             app.UseRouting();
 
+
+            // global cors policy
+            app.UseCors(x => x
+                .AllowAnyMethod()
+                .AllowAnyHeader()
+                .SetIsOriginAllowed(origin => true) // allow any origin
+                .AllowCredentials()); // allow credentials
+
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
             });
-            /*app.UseSwagger();
-            app.UseSwaggerUI(c =>
-            {
-                c.SwaggerEndpoint("/swagger/v1/swagger.json", "FoodAPICore V1");
-            });*/
         }
     }
 }

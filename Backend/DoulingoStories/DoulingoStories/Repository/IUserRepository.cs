@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using DoulingoStories.Models;
 
 namespace DoulingoStories.Repository
 {
@@ -9,6 +10,6 @@ namespace DoulingoStories.Repository
     {
         string SendRegister(string username, string password, string email);
         int CreateUser(string username, string password, string email);
-        bool CheckUser(string username, string password);
+        RestAPI CheckUser(string username, string password);
     }
 }

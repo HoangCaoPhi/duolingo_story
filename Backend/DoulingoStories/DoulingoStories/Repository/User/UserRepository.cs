@@ -25,8 +25,10 @@ namespace DoulingoStories.Repository.Story
             Email(contenemail(), email);
             return "ok";
         }
-        public bool CheckUser(string username, string password)
+        public RestAPI CheckUser(string username, string password)
         {
+            RestAPI restAPI = new RestAPI();
+            UesrInfo userinfo = new UesrInfo();
             using (SHA256 sha256Hash = SHA256.Create())
             {
                 // ComputeHash - returns byte array  
@@ -43,10 +45,17 @@ namespace DoulingoStories.Repository.Story
                     Where(x => x.password == builder.ToString()).Where(x => x.activated == 1).FirstOrDefault();
                 if(user != null)
                 {
-                    return true;
+                    restAPI.StatusCode = 200;
+                    userinfo.username = user.username;
+                    userinfo.email = user.email;
+                    restAPI.Data = userinfo;
+                }
+                else
+                {
+                    restAPI.StatusCode = -1;
                 }
             }
-            return false;
+            return restAPI;
                 
         }
             
@@ -72,6 +81,7 @@ namespace DoulingoStories.Repository.Story
                         username = username,
                         password = builder.ToString(),
                         email = email,
+                        regdate = DateTime.Now,
                         activated = 1
                     };
                     db.User.Add(user);
@@ -136,7 +146,7 @@ namespace DoulingoStories.Repository.Story
         public static DbContextOptions<DoulingoDbContext> GetOptions()
         {
             DbContextOptionsBuilder<DoulingoDbContext> builder = new DbContextOptionsBuilder<DoulingoDbContext>();
-            builder.UseMySql("Server=127.0.0.1;uid=root;Database=doulingo_stories;pwd=;Convert Zero Datetime=True");
+            builder.UseMySql("Server=127.0.0.1;uid=root;Database=doulingo_stories;pwd=123456;Convert Zero Datetime=True");
 
             return builder.Options;
         }

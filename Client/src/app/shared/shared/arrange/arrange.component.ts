@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { TranferdataService } from 'src/app/services/tranferdata.service';
 import { Arrange } from '../../models/arrange/arrange';
 import { TrackingProperties } from '../../models/tracking-properties';
@@ -41,6 +41,10 @@ export class ArrangeComponent implements OnInit {
     this.trackingProperties = value.trackingProperties;
   }
 
+  /** Bỏ disable nút tiếp tục khi trả lời câu hỏi đúng */
+  @Output() isShowContinue = new EventEmitter<boolean>();
+
+
   constructor(private tranferDataSV: TranferdataService) { }
 
   ngOnInit(): void {
@@ -66,8 +70,13 @@ export class ArrangeComponent implements OnInit {
       }
 
       this.tranferDataSV.isShowItem(objectTranfer);
-      
+
       this.currentIndex++;
+
+      if (this.currentIndex === this.phraseOrder.length) {
+        this.isShowContinue.emit(true);
+      }
+
     }
     else {
       this.isWrong = true;
