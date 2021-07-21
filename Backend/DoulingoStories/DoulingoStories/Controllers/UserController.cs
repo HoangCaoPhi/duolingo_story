@@ -30,9 +30,7 @@ namespace DoulingoStories.Controllers
         public IActionResult Resgiter([FromBody] User user)
         {
             string json = _userRepository.SendRegister(user.username, user.password, user.email);
-            //IEnumerable<CourseDTO> dtos = foodItems
-            //     .Select(x => _mapper.Map<CourseDTO>(x));
-
+            
             return Ok(json);
         }
         [HttpPost]
@@ -40,9 +38,7 @@ namespace DoulingoStories.Controllers
         public IActionResult Create([FromBody] User user)
         {
             int json = _userRepository.CreateUser(user.username, user.password, user.email);
-            //IEnumerable<CourseDTO> dtos = foodItems
-            //     .Select(x => _mapper.Map<CourseDTO>(x));
-
+           
             return Ok(json);
         }
         [HttpPost]
@@ -50,9 +46,7 @@ namespace DoulingoStories.Controllers
         public IActionResult Check([FromBody] User user)
         {
             RestAPI json = _userRepository.CheckUser(user.username, user.password);
-            //IEnumerable<CourseDTO> dtos = foodItems
-            //     .Select(x => _mapper.Map<CourseDTO>(x));
-
+            
             return Ok(json);
         }
     }

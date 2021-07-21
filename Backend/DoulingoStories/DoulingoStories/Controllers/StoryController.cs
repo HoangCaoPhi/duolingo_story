@@ -27,8 +27,7 @@ namespace DoulingoStories.Controllers
         public IActionResult GetJsonById(int id)
         {
             string json = _storyRepository.GetJson(id);
-            //IEnumerable<CourseDTO> dtos = foodItems
-            //     .Select(x => _mapper.Map<CourseDTO>(x));
+        
 
             return Ok(json);
         }

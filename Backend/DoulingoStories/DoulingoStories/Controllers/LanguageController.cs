@@ -34,9 +34,7 @@ namespace DoulingoStories.Controllers
         public IActionResult GetAll([FromQuery] QueryParameters queryParameters)
         {
             List<Models.Language> allLanguage = _languageRepository.GetAll(queryParameters).ToList();
-            //IEnumerable<CourseDTO> dtos = foodItems
-            //     .Select(x => _mapper.Map<CourseDTO>(x));
-
+            
             return Ok(allLanguage);
         }
 
@@ -45,9 +43,7 @@ namespace DoulingoStories.Controllers
         public IActionResult Insert([FromQuery] QueryParameters queryParameters)
         {
             _languageRepository.Insert();
-            //IEnumerable<CourseDTO> dtos = foodItems
-            //     .Select(x => _mapper.Map<CourseDTO>(x));
-
+            
             return Ok(200);
         }
         /*[HttpGet]

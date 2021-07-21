@@ -36,7 +36,7 @@
       </ng-container>
 
       <!-- Nhân vật kèm theo lời thoại -->
-      <ng-container *ngIf="item?.type === storyType.LINE && item?.line?.type !== 'TITLE'">
+      <ng-container *ngIf="item?.type === storyType.LINE && item?.line?.type != 'TITLE'">
         <div class="question dis-flex">
           <app-line [lineObject]="item"
                     (emitTextAudio)="playAudio($event)">

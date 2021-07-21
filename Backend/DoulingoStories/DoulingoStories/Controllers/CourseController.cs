@@ -34,9 +34,7 @@ namespace DoulingoStories.Controllers
         public IActionResult GetAll([FromQuery] QueryParameters queryParameters)
         {
             List<Models.Course> allCourse = _courseRepository.GetAll(queryParameters).ToList();
-            //IEnumerable<CourseDTO> dtos = foodItems
-            //     .Select(x => _mapper.Map<CourseDTO>(x));
-
+            
             return Ok(allCourse);
         }
         [HttpGet]
@@ -44,9 +42,7 @@ namespace DoulingoStories.Controllers
         public IActionResult GetAll2([FromQuery] QueryParameters queryParameters)
         {
             List<Models.CourseQuery> allCourse = _courseRepository.GetAllCourse().ToList();
-            //IEnumerable<CourseDTO> dtos = foodItems
-            //     .Select(x => _mapper.Map<CourseDTO>(x));
-
+            
             return Ok(allCourse);
         }
         [HttpGet]
@@ -54,9 +50,7 @@ namespace DoulingoStories.Controllers
         public IActionResult GetCourseById(int id)
         {
             Models.Course Course= _courseRepository.GetSingle(id);
-            //IEnumerable<CourseDTO> dtos = foodItems
-            //     .Select(x => _mapper.Map<CourseDTO>(x));
-
+            
             return Ok(Course);
         }
         [HttpGet]
@@ -66,9 +60,7 @@ namespace DoulingoStories.Controllers
             string lang = Request.Query["learnlang"];
             string langbase = Request.Query["fromlang"];
             List<CourseObject> Course = _courseRepository.GetListCourse(lang, langbase);
-            //IEnumerable<CourseDTO> dtos = foodItems
-            //     .Select(x => _mapper.Map<CourseDTO>(x));
-
+            
             return Ok(Course);
         }
 

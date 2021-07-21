@@ -81,7 +81,6 @@ D:\Khóa luận tốt nghiệp\Duolingo-Clone\Backend\DoulingoStories\DoulingoSt
 D:\Khóa luận tốt nghiệp\Duolingo-Clone\Backend\DoulingoStories\DoulingoStories\bin\Debug\netcoreapp3.1\System.Collections.Immutable.dll
 D:\Khóa luận tốt nghiệp\Duolingo-Clone\Backend\DoulingoStories\DoulingoStories\bin\Debug\netcoreapp3.1\System.Diagnostics.DiagnosticSource.dll
 D:\Khóa luận tốt nghiệp\Duolingo-Clone\Backend\DoulingoStories\DoulingoStories\bin\Debug\netcoreapp3.1\System.Linq.Dynamic.Core.dll
-D:\Khóa luận tốt nghiệp\Duolingo-Clone\Backend\DoulingoStories\DoulingoStories\obj\Debug\netcoreapp3.1\DoulingoStories.csprojAssemblyReference.cache
 D:\Khóa luận tốt nghiệp\Duolingo-Clone\Backend\DoulingoStories\DoulingoStories\obj\Debug\netcoreapp3.1\DoulingoStories.AssemblyInfoInputs.cache
 D:\Khóa luận tốt nghiệp\Duolingo-Clone\Backend\DoulingoStories\DoulingoStories\obj\Debug\netcoreapp3.1\DoulingoStories.AssemblyInfo.cs
 D:\Khóa luận tốt nghiệp\Duolingo-Clone\Backend\DoulingoStories\DoulingoStories\obj\Debug\netcoreapp3.1\DoulingoStories.csproj.CoreCompileInputs.cache
@@ -94,3 +93,4 @@ D:\Khóa luận tốt nghiệp\Duolingo-Clone\Backend\DoulingoStories\DoulingoSt
 D:\Khóa luận tốt nghiệp\Duolingo-Clone\Backend\DoulingoStories\DoulingoStories\obj\Debug\netcoreapp3.1\DoulingoStories.dll
 D:\Khóa luận tốt nghiệp\Duolingo-Clone\Backend\DoulingoStories\DoulingoStories\obj\Debug\netcoreapp3.1\DoulingoStories.pdb
 D:\Khóa luận tốt nghiệp\Duolingo-Clone\Backend\DoulingoStories\DoulingoStories\obj\Debug\netcoreapp3.1\DoulingoStories.genruntimeconfig.cache
+D:\Khóa luận tốt nghiệp\Duolingo-Clone\Backend\DoulingoStories\DoulingoStories\obj\Debug\netcoreapp3.1\DoulingoStories.csproj.AssemblyReference.cache
